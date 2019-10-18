@@ -1,0 +1,16 @@
+#!/bin/bash
+
+H_FOLDER="$HOME/Downloads/.doc"
+NAME=${1%.zip*}
+#NAME=${NAME// /_}
+#PREZIP=${1// /\ }
+#ZIP=${1// /_}
+#NAME=${NAME#/*}
+DEST_FOLDER="$H_FOLDER/$NAME"
+
+echo $PREZIP
+#mv $PREZIP $ZIP
+unzip $1 -d $DEST_FOLDER
+mv $1 $H_FOLDER
+
+#echo $ZIP

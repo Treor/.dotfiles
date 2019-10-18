@@ -1,0 +1,3 @@
+#!/bin/bash
+OUTPUT_FILE="$HOME/aliases.bash"
+echo 'alias' $1'="'$2'"' >> $OUTPUT_FILE

@@ -1,0 +1,15 @@
+[submodule "tmux/.tmux/plugins/tmux-sensible"]
+	path = tmux/.tmux/plugins/tmux-sensible
+	url = git@github.com:tmux-plugins/tmux-sensible.git
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = git@github.com:tmux-plugins/tpm.git
+[submodule "zsh/.zsh/base16-shell"]
+	path = zsh/.zsh/base16-shell
+	url = git@github.com:chriskempson/base16-shell.git
+[submodule "zsh/.zsh/zsh-autosuggestions"]
+	path = zsh/.zsh/zsh-autosuggestions
+	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "zsh/.zsh/zsh-syntax-highlighting"]
+	path = zsh/.zsh/zsh-syntax-highlighting
+	url = git@github.com:zsh-users/zsh-syntax-highlighting.git

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+case "${SRANDRD_OUTPUT} ${SRANDRD_EVENT}" in
+#   "HDMI1 connected") xrandr --fb 1920x1080 --output HDMI1 --gamma 1.0:1.0:1.0 --mode 1920x1080 --pos 0x0 --rate 60.00 --reflect normal --rotate normal;;
+#   "HDMI1 disconnected") xrandr --fb 1366x768 --output HDMI1 --off --output LVDS1 --gamma 1.0:1.0:1.0 --mode 1366x768 --pos 0x0 --primary --rate 60.00 --reflect normal --rotate normal;;
+    "HDMI1 connected") notify-send pidor suka;;
+    "HDMI1 disconnected") notify-send mocha kaki;;
+esac
