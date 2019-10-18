@@ -79,7 +79,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'xolox/vim-misc'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'gregsexton/MatchTag'
-    Plug 'vim-latex/vim-latex'
     Plug 'jceb/vim-orgmode'
     Plug 'majutsushi/tagbar'
     Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -87,30 +86,35 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'matze/vim-move'
     Plug 'Yggdroot/indentLine'
     Plug 'w0rp/ale'
-    Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
     Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
     Plug 'airblade/vim-gitgutter'
     Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
     Plug 'PotatoesMaster/i3-vim-syntax'
-    Plug 'SirVer/ultisnips'
-    Plug 'zchee/deoplete-jedi', {'for': ['python', 'python3','djangohtml'], 'do': 'pip install jedi;pip3 install jedi'}
     Plug 'lilydjwg/colorizer', {'do': 'make'} " colorize rgb rgba texts
-    Plug 'wokalski/autocomplete-flow' " deplete src for js
     Plug 'cj/vim-webdevicons'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'Shougo/neco-vim'
+    Plug 'neoclide/coc-neco'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    "Plug 'SirVer/ultisnips'
+    "Plug 'vim-latex/vim-latex'
+    "Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
+    "Plug 'zchee/deoplete-jedi', {'for': ['python', 'python3','djangohtml'], 'do': 'pip install jedi;pip3 install jedi'}
+    "Plug 'wokalski/autocomplete-flow' " deoplete src for js
     "Plug 'chriskempson/base16-vim', {'do': 'git checkout dict_fix'}
     " For func argument completion
     "Plug 'Shougo/neosnippet'
     "Plug 'Shougo/neosnippet-snippets'
-    Plug 'wincent/command-t', {
-    \  'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-    \  }
-    if has('nvim')
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
-        Plug 'Shougo/deoplete.nvim'
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hug-neovim-rpc'
-    endif
+    "Plug 'wincent/command-t', {
+    "\  'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+    "\  }
+    "if has('nvim')
+        "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    "else
+        "Plug 'Shougo/deoplete.nvim'
+        "Plug 'roxma/nvim-yarp'
+        "Plug 'roxma/vim-hug-neovim-rpc'
+    "endif
 
 " Initialize plugin system
 call plug#end()
@@ -119,8 +123,6 @@ call plug#end()
 
 " Colours and UI {{{
 
-"set rtp+=/home/treor/.local/lib/python3.6/site-packages/powerline/bindings/vim
-"set background=dark
 source ~/.config/nvim/colors/lena.vim
 set t_Co=256
 
@@ -163,29 +165,6 @@ let NERDTreeQuitOnOpen = 1
 
 "}}}
 
-" Airline {{{
-
-"let g:airline_theme='molokai'
-"let g:airline#extensions#tabline#formatter = 'default'
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airairline_powerline_fonts = 1
-"let g:airline_symbols = {}
-"if !exists('g:airline_symbols')
-   "let g:airline_symbols = {}
-"endif
-
-" powerline symbols
-  "let g:airline_left_sep = ''
-  "let g:airline_left_alt_sep = ''
-  "let g:airline_right_sep = ''
-  "let g:airline_right_alt_sep = ''
-  "let g:airline_symbols.branch = ''
-  "let g:airline_symbols.readonly = ''
-  "let g:airline_symbols.linenr = '☰'
-  "let g:airline_symbols.maxlinenr = ' '
-
-"let g:airline#extensions#ale#enabled = 1
-    " }}}
 " }}}
 
 " General settings {{{
@@ -275,65 +254,108 @@ let g:gitgutter_max_signs = 500  " default value
 " Use Ctrl+j/k to easily move a line
 let g:move_key_modifier = 'C'
 
- " UtilSnips {{{ 
+" CoC {{{
 
-let g:UltiSnipsSnippetDirectories = ['/home/treor/.config/nvim/pluged/ultixsSnips', 'ultisnips']
+" if hidden is not set, TextEdit might fail.
+set hidden
 
- " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
 
-"let g:UltiSnipsExpandTrigger="<a-tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+" Better display for messages
+set cmdheight=2
 
-" Prevent UltiSnips from removing our carefully-crafted mappings.
-let g:UltiSnipsMappingsToIgnore = ['autocomplete']
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
 
-if has('autocmd')
-  augroup Autocomplete
-    autocmd!
-    autocmd! User UltiSnipsEnterFirstSnippet
-    autocmd User UltiSnipsEnterFirstSnippet call autocomplete#setup_mappings()
-    autocmd! User UltiSnipsExitLastSnippet
-    autocmd User UltiSnipsExitLastSnippet call autocomplete#teardown_mappings()
-  augroup END
-endif
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" always show signcolumns
+set signcolumn=yes
 
-" }}}
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 
-" JavaComplete {{{
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-set omnifunc=syntaxcomplete#Complete
-let g:JavaComplete_LibsPath = "/home/treor/java/algs4.jar"
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+let g:coc_snippet_next = '<tab>'
 
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-    " }}}
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
 
-" Deoplete {{{
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni_patterns = {}
-let g:deoplete#auto_completion_start_length = 1
-let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
-let g:deoplete#sources = {}
-let g:deoplete#sources._ = []
-let g:deoplete#file#enable_buffer_path = 1
-" Binary path to your flow, defaults to your $PATH flow
-let g:deoplete#sources#flow#flow_bin = 'flow'
-call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
-call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-call deoplete#custom#source('ultisnips', 'rank', 1000)
-" Deoplete tab-completion
-"inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
-inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr><Down> pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-j>"
-inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<Up>"
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " }}}
 
@@ -349,15 +371,6 @@ let g:ale_sign_warning = '>?'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-" Deoplete Python
-AutocmdFT python let g:deoplete#sources#jedi#enable_cache = 1
-AutocmdFT python let g:deoplete#sources#jedi#statement_length = 0
-AutocmdFT python let g:deoplete#sources#jedi#short_types = 0
-AutocmdFT python let g:deoplete#sources#jedi#show_docstring = 1
-AutocmdFT python let g:deoplete#sources#jedi#worker_threads = 4
-AutocmdFT python call deoplete#custom#source('jedi', 'disabled_syntaxes', ['Comment'])
-AutocmdFT python call deoplete#custom#source('jedi', 'matchers', ['matcher_fuzzy'])
 
 "let g:ale_java_javac_classpath = [String], to load aditional classes
 let g:ale_java_javac_classpath = "/home/daniel/java/algs4.jar"
@@ -410,17 +423,33 @@ let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 2
 "let g:indentLine_setConceal = 0
 
+" 
 " }}}
-    
-let g:CommandTScanDotDirectories = 1
-let g:CommandTMaxFiles = 150000
-let g:CommandTAlwaysShowDotFiles = 1
-let g:CommandTSuppressMaxFilesWarning = 1
+
+" Ctrlp {{{
+
+let g:ctrlp_switch_buffer = '0'
+" Useful for large projects
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=10
+" So that it does not only index starting from current directory
+let g:ctrlp_working_path_mode = ""
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+" Use ag AKA the_silver_searcher for indexing. Faster!!!
+" TIP: Use ~/.ignore to ignore directories/files
+" set grepprg=ag\ --nogroup\ --nocolor
+" let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+""if executable('ag')
+""  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+""endif
+let g:ctrlp_show_hidden =1
+let g:ctrlp_clear_cache_on_exit = 0
+
+"}}}
 
 nmap <F8> :TagbarToggle<CR>
 
 nnoremap <silent><esc> :noh<return><esc>
-
 source ~/.config/nvim/statusline.vim
 
 "}}}
