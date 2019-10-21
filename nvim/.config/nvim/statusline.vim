@@ -86,6 +86,12 @@ set statusline+=%#MyStatuslineModified#
 " Right side items
 " =======================
 set statusline+=%=
+" CoC status
+set statusline+=%#MyStatuslineCoCInfoCol#
+set statusline+=%#MyStatuslineCoCInfoColBody#%{StatusDiagnostic()}
+set statusline+=%#MyStatuslineCoCInfoCol#
+" Padding
+set statusline+=\ 
 " Line and Column
 set statusline+=%#MyStatuslineLineCol#
 set statusline+=%#MyStatuslineLineColBody#%2l
@@ -121,3 +127,6 @@ hi MyStatuslinePercentageBody ctermbg=0 cterm=none ctermfg=6
 
 hi MyStatuslineLineCol ctermfg=0 cterm=NONE ctermbg=NONE
 hi MyStatuslineLineColBody ctermbg=0 cterm=none ctermfg=2
+
+hi MyStatuslineCoCInfoCol ctermfg=0 cterm=NONE ctermbg=NONE
+hi MyStatuslineCoCInfoColBody ctermbg=0 cterm=none ctermfg=2

@@ -96,6 +96,25 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Shougo/neco-vim'
     Plug 'neoclide/coc-neco'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'prettier/vim-prettier', {
+        \ 'do': 'yarn install',
+        \ 'branch': 'release/1.x',
+        \ 'for': [
+            \ 'javascript',
+            \ 'typescript',
+            \ 'css',
+            \ 'less',
+            \ 'scss',
+            \ 'json',
+            \ 'graphql',
+            \ 'markdown',
+            \ 'vue',
+            \ 'lua',
+            \ 'php',
+            \ 'python',
+            \ 'ruby',
+            \ 'html',
+            \ 'swift' ] }
     "Plug 'SirVer/ultisnips'
     "Plug 'vim-latex/vim-latex'
     "Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
@@ -325,8 +344,8 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
+"nmap <silent> <C-d> <Plug>(coc-range-select)
+"xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -451,6 +470,18 @@ let g:ctrlp_clear_cache_on_exit = 0
 nmap <F8> :TagbarToggle<CR>
 
 nnoremap <silent><esc> :noh<return><esc>
+function! StatusDiagnostic() abort
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info) | return '' | endif
+    let msgs = []
+    if get(info, 'error', 0)
+        call add(msgs, 'E' . info['error'])
+    endif
+    if get(info, 'warning', 0)
+        call add(msgs, 'W' . info['warning'])
+    endif
+        return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction
 source ~/.config/nvim/statusline.vim
 
 "}}}
