@@ -3,6 +3,7 @@
   "description": "Configuration file for coc.nvim",
   "additionalProperties": false,
   "python.jediEnabled": false, 
+  "coc.preferences.timeout": 5000,
   "definitions": {
     "languageServerBase": {
       "type": "object",

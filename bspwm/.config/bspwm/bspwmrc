@@ -2,7 +2,9 @@
 
 sxhkd &
 unclutter &
-~/.fehbg &
+#~/.fehbg &
+#hsetroot -add "#DAD299" -add "#B0DAB9" -gradient 0 &
+hsetroot -add "#A1EFD3" -add "#24D1E7" -gradient 0 &
 
 bspc monitor -d I II III IV V VI
 

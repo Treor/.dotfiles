@@ -1,2 +1,4 @@
 nvim/.config/nvim/plugged/*
 .vim/
+session.vim
+Session.vim

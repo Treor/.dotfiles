@@ -1,10 +1,10 @@
 
-"███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-"████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-"██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+"███╗ ██╗███████╗ ██████╗ ██╗       ██╗██╗███╗   ███╗
+"████╗  ██║██╔════╝██╔═══██╗██║     ██║██║████╗ ████║
+"██╔██╗ ██║█████╗  ██║   ██║██║     ██║██║██╔████╔██║
 "██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 "██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-"╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+"╚═╝    ╚═══╝╚══════╝ ╚═════╝       ╚═══╝  ╚═╝╚═╝       ╚═╝
 
 " Plugin dependencies {{{
 
@@ -20,24 +20,24 @@ if has('vim_starting')
 endif
 
 "if !has('python') && !has('pip')
-"   call system('pip install --upgrade pip')
-"   call system('pip install neovim --upgrade')
+" call system('pip install --upgrade pip')
+" call system('pip install neovim --upgrade')
     "echo system('Installing upgrade pip and install neovim')
 "endif
 
 "if !has('python3') && !has('pip3')
-"   call system('pip3 install --upgrade pip')
-"   call system('pip3 install neovim --upgrade')
+" call system('pip3 install --upgrade pip')
+" call system('pip3 install neovim --upgrade')
     "echo system('Installing upgrade pip3 and install neovim')
 "endif
 
 "if !has('npm')
-"   call system('sudo pacman -S nodejs npm')
+" call system('sudo pacman -S nodejs npm')
     "echo system('installing nodejs and npm')
 "endif
 
 "if !has('eslint')
-"   call system('sudo npm install -g eslint')
+" call system('sudo npm install -g eslint')
     "echo system('installing eslint')
 "endif
 
@@ -47,12 +47,12 @@ endif
 
 "if executable('python2.7')
     "let g:python_host_prog = system('which python')
-"   let g:python_host_prog = /usr/bin/python2.7"
+" let g:python_host_prog = /usr/bin/python2.7"
 "endif
 
 "if executable('python3')
     "let g:python3_host_prog = system('which python3')
-"   let g:python3_host_prog = /usr/bin/python3"
+" let g:python3_host_prog = /usr/bin/python3"
 "endif
 
 " }}}
@@ -216,44 +216,44 @@ let g:session_autoload = "no"
 
 " AutoGroup settings{{{
 
-        augroup AutoGroup
-        autocmd!
-        augroup END
+augroup AutoGroup
+autocmd!
+augroup EN
+command! -nargs=* Autocmd autocmd AutoGroup <args>
+command! -nargs=* AutocmdFT autocmd AutoGroup FileType <args>
 
-        command! -nargs=* Autocmd autocmd AutoGroup <args>
-        command! -nargs=* AutocmdFT autocmd AutoGroup FileType <args>
+" }}}
 
-        " }}}
-    " }}}
+" }}}
 
 " CUSTOM {{{
 
 function! BufSel(pattern)
-  let bufcount = bufnr("$")
-  let currbufnr = 1
-  let nummatches = 0
-  let firstmatchingbufnr = 0
-  while currbufnr <= bufcount
-    if(bufexists(currbufnr))
-      let currbufname = bufname(currbufnr)
-      if(match(currbufname, a:pattern) > -1)
-        echo currbufnr . ": ". bufname(currbufnr)
-        let nummatches += 1
-        let firstmatchingbufnr = currbufnr
-      endif
+    let bufcount = bufnr("$")
+    let currbufnr = 1
+    let nummatches = 0
+    let firstmatchingbufnr = 0
+    while currbufnr <= bufcount
+        if(bufexists(currbufnr))
+            let currbufname = bufname(currbufnr)
+            if(match(currbufname, a:pattern) > -1)
+                echo currbufnr . ": ". bufname(currbufnr)
+                let nummatches += 1
+                let firstmatchingbufnr = currbufnr
+            endif
+        endif
+        let currbufnr = currbufnr + 1
+    endwhile
+    if(nummatches == 1)
+        execute ":buffer ". firstmatchingbufnr
+    elseif(nummatches > 1)
+        let desiredbufnr = input("Enter buffer number: ")
+        if(strlen(desiredbufnr) != 0)
+            execute ":buffer ". desiredbufnr
+        endif
+    else
+        echo "No matching buffers"
     endif
-    let currbufnr = currbufnr + 1
-  endwhile
-  if(nummatches == 1)
-    execute ":buffer ". firstmatchingbufnr
-  elseif(nummatches > 1)
-    let desiredbufnr = input("Enter buffer number: ")
-    if(strlen(desiredbufnr) != 0)
-      execute ":buffer ". desiredbufnr
-    endif
-  else
-    echo "No matching buffers"
-  endif
 endfunction
 
 "Bind the BufSel() function to a user-command
@@ -297,18 +297,18 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]    =~# '\s'
 endfunction
 
 
-" let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_next = '<tab>'
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -321,11 +321,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
@@ -354,7 +354,7 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR     :call   CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
@@ -396,26 +396,26 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_java_javac_classpath = "/home/daniel/java/algs4.jar"
 
 let g:ale_linters = {
-        \   'javascript': ['eslint'],
-        \   'java': ['javac','javac-algs4'],
-        \   'php': ['php', 'phpcs', 'phpmd'],
-        \   'go': ['go build', 'gometalinter'],
-        \   'rust': ['rustc'],
-        \   'html': ['tidy', 'htmlhint'],
-        \   'c': ['clang'],
-        \   'cpp': ['clang++'],
-        \   'css': ['csslint', 'stylelint'],
-        \   'nim': ['nim', 'nimsuggest'],
-        \   'vim': ['vint'],
-        \   'python': ['python', 'pyflakes', 'flake8'],
-        \   'shell': ['sh', 'shellcheck'],
-        \   'zsh': ['zsh'],
-        \   'swift': ['swiftc'],
+        \ 'javascript': ['eslint'],
+        \ 'java': ['javac','javac-algs4'],
+        \ 'php': ['php', 'phpcs', 'phpmd'],
+        \ 'go': ['go build', 'gometalinter'],
+        \ 'rust': ['rustc'],
+        \ 'html': ['tidy', 'htmlhint'],
+        \ 'c': ['clang'],
+        \ 'cpp': ['clang++'],
+        \ 'css': ['csslint', 'stylelint'],
+        \ 'nim': ['nim', 'nimsuggest'],
+        \ 'vim': ['vint'],
+        \ 'python': ['python', 'pyflakes', 'flake8'],
+        \ 'shell': ['sh', 'shellcheck'],
+        \ 'zsh': ['zsh'],
+        \ 'swift': ['swiftc'],
         \}
 
 let g:ale_fixers = {
-        \   'javascript': ['eslint'],
-        \   'java': ['google_java_format']
+        \ 'javascript': ['eslint'],
+        \ 'java': ['google_java_format']
         \}
 " }}}
 
@@ -438,9 +438,9 @@ let g:tex_flavor = "latex"
 " IndentLine {{{
 
 "let g:indentLine_setColors = 0
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_concealcursor = 'inc'
-let g:indentLine_conceallevel = 2
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"let g:indentLine_concealcursor = 'inc'
+"let g:indentLine_conceallevel = 2
 "let g:indentLine_setConceal = 0
 
 " 
@@ -457,8 +457,8 @@ let g:ctrlp_working_path_mode = ""
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 " Use ag AKA the_silver_searcher for indexing. Faster!!!
 " TIP: Use ~/.ignore to ignore directories/files
-" set grepprg=ag\ --nogroup\ --nocolor
-" let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+set grepprg=ag\ --nogroup\ --nocolor
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 ""if executable('ag')
 ""  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 ""endif
@@ -470,6 +470,7 @@ let g:ctrlp_clear_cache_on_exit = 0
 nmap <F8> :TagbarToggle<CR>
 
 nnoremap <silent><esc> :noh<return><esc>
+
 function! StatusDiagnostic() abort
     let info = get(b:, 'coc_diagnostic_info', {})
     if empty(info) | return '' | endif
@@ -482,6 +483,7 @@ function! StatusDiagnostic() abort
     endif
         return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
+
 source ~/.config/nvim/statusline.vim
 
 "}}}
