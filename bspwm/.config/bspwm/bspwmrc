@@ -4,18 +4,18 @@ sxhkd &
 unclutter &
 #~/.fehbg &
 #hsetroot -add "#DAD299" -add "#B0DAB9" -gradient 0 &
-hsetroot -add "#A1EFD3" -add "#24D1E7" -gradient 0 &
+hsetroot -add "#BD99FF" -add "#56687E" -gradient 0 &
 
 bspc monitor -d I II III IV V VI
 
 bspc config border_width         3
-bspc config window_gap           0
+bspc config window_gap           10
 #bspc config bottom_monocle_padding 23
-bspc config bottom_padding         26
+bspc config bottom_padding         23
 
 bspc config split_ratio          0.60
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config borderless_monocle   false
+bspc config gapless_monocle      false
 bspc config ignore_ewmh_focus    true
 
 #bspc rule -a Gimp desktop='^8' state=floating follow=on
@@ -29,3 +29,5 @@ bspc rule -a Deluge-gtk desktop='^6'
 bspc rule -a mpv desktop='^3' state=fullscreen focus=on
 
 ~/.config/polybar/polybar.sh &
+#killall tint2
+#tint2 &

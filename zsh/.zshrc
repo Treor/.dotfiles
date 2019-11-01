@@ -404,7 +404,7 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source ~/fzf/shell/completion.zsh
 source ~/fzf/shell/key-bindings.zsh
-
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 if [ -e /etc/motd ]; then
   if ! cmp -s $HOME/.hushlogin /etc/motd; then
     tee $HOME/.hushlogin < /etc/motd
@@ -425,3 +425,5 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
