@@ -66,9 +66,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-eunuch'     " UNIX commands in VIM
     Plug 'tpope/vim-tbone'      " TMUX
     Plug 'tpope/vim-dadbod'     " DataBases
-    Plug 'tpope/vim-vinegar'
     Plug 'tpope/vim-obsession'
-    Plug 'tpope/vim-endwise'
+    "Plug 'tpope/vim-endwise'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-speeddating'
     Plug 'tpope/vim-fugitive'
@@ -91,8 +90,11 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
     Plug 'PotatoesMaster/i3-vim-syntax'
     Plug 'lilydjwg/colorizer', {'do': 'make'} " colorize rgb rgba texts
-    Plug 'cj/vim-webdevicons'
-    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    "Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
     Plug 'Shougo/neco-vim'
     Plug 'neoclide/coc-neco'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -173,7 +175,7 @@ autocmd StdinReadPre * let s:std_in=1
 " close vim if the only window left open is a NERDTree
 
 " Open NERDTree with Ctrl+n
-"map <C-n> :NERDTreeToggle<CR> 
+map <leader>n :NERDTreeToggle<CR> 
 
 " Would be useful mappings, but they interfere with my line movement bindings (<C-j> and <C-k>).
 let g:NERDTreeMapJumpPrevSibling='<Nop>'
@@ -181,6 +183,52 @@ let g:NERDTreeMapJumpNextSibling='<Nop>'
 
 " Quit nertree when a file is opened.
 let NERDTreeQuitOnOpen = 1
+
+" Ignore turds left behind by Mercurial.
+let g:NERDTreeIgnore=['\.orig']
+
+" The default of 31 is just a little too narrow.
+let g:NERDTreeWinSize=40
+
+" Disable display of '?' text and 'Bookmarks' label.
+let g:NERDTreeMinimalUI=1
+
+" Let <Leader><Leader> (^#) return from NERDTree window.
+let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
+
+" Single-click to toggle directory nodes, double-click to open non-directory
+" nodes.
+let g:NERDTreeMouseMode=2
+
+if has('autocmd')
+  augroup WincentNERDTree
+    autocmd!
+    autocmd User NERDTreeInit call autocmds#attempt_select_last_file()
+  augroup END
+endif
+
+"call plugin#lazy({
+      "\   'pack': 'nerdtree',
+      "\   'plugin': 'NERD_tree.vim',
+      "\   'commands': {
+      "\        'NERDTree': '-n=? -complete=dir -bar',
+      "\        'NERDTreeCWD': '-n=0 -bar',
+      "\        'NERDTreeClose': '-n=0 -bar',
+      "\        'NERDTreeFind': '-n=0 -bar',
+      "\        'NERDTreeFocus': '-n=0 -bar',
+      "\        'NERDTreeFromBookmark': '-n=1 -bar',
+      "\        'NERDTreeMirror': '-n=0 -bar',
+      "\        'NERDTreeToggle': '-n=? -complete=dir -bar',
+      "\   },
+      "\   'nnoremap': {
+      "\        '<silent> -': ":silent edit <C-R>=empty(expand('%')) ? '.' : fnameescape(expand('%:p:h'))<CR><CR>",
+      "\        '<C-_>': ':NERDTreeFind<CR>'
+      "\   }
+      "\ })
+
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : fnameescape(expand('%:p:h'))<CR><CR>
+nnoremap <C-_> :NERDTreeFind<CR>
+noremap <F5> :NERDTreeToggle<cr><c-w>p
 
 "}}}
 
@@ -194,7 +242,7 @@ syntax on "Enable syntax
 set number "Set line number
 set rnu "relative number numeration
 " set confirm
-filetype plugin indent on
+filetype indent plugin on
 set autowriteall "automatically save any changes made to the buffer before it is hidden.
 " use 4 spaces for tabs
 set tabstop=4 softtabstop=4 shiftwidth=4
@@ -307,8 +355,14 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]    =~# '\s'
 endfunction
 
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"inoremap <silent><expr> <c-space> coc#refresh()
+autocmd CmdwinEnter * nnoremap <CR> <CR>
+autocmd BufReadPost quickfix nnoremap <CR> <CR>
 
 let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<S-TAB>'
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -417,6 +471,7 @@ let g:ale_fixers = {
         \ 'javascript': ['eslint'],
         \ 'java': ['google_java_format']
         \}
+
 " }}}
 
 " AutorPair{{{
@@ -424,7 +479,7 @@ let g:ale_fixers = {
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 
-    "}}}
+"}}}
 
 " Latex-live-preview {{{
 
@@ -433,7 +488,8 @@ let g:livepreview_previewer = 'zathura'
 let g:livepreview_engine = 'pdflatex'
 
 let g:tex_flavor = "latex"
-    "}}}
+
+"}}}
 
 " IndentLine {{{
 
@@ -443,29 +499,58 @@ let g:tex_flavor = "latex"
 "let g:indentLine_conceallevel = 2
 "let g:indentLine_setConceal = 0
 
-" 
+ 
 " }}}
 
-" Ctrlp {{{
+" fzf + rg {{{
 
-let g:ctrlp_switch_buffer = '0'
-" Useful for large projects
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=10
-" So that it does not only index starting from current directory
-let g:ctrlp_working_path_mode = ""
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-" Use ag AKA the_silver_searcher for indexing. Faster!!!
-" TIP: Use ~/.ignore to ignore directories/files
-set grepprg=ag\ --nogroup\ --nocolor
-let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
-""if executable('ag')
-""  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-""endif
-let g:ctrlp_show_hidden =1
-let g:ctrlp_clear_cache_on_exit = 0
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-"}}}
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+"set grepprg=rg\ --vimgrep
+
+nnoremap <C-P> :Find<CR>
+
+" }}}
 
 nmap <F8> :TagbarToggle<CR>
 
