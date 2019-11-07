@@ -119,3 +119,25 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+# Custom bindings
+#
+
+# Manual pages in dmenu (will be opened in zathura as .pdf file)
+super + shift + m
+    manpdf-dmenu
+
+# Screenshot keybindings
+
+# full viewport
+Print
+    maim |xclip -selection clipboard -t image/png
+
+# focused node
+alt + Print
+    maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+
+# selected region
+shift + Print
+    maim -s | xclip -selection clipboard -t image/png
