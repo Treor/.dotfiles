@@ -109,6 +109,7 @@ call plug#begin('~/.config/nvim/plugged')
             \ 'ruby',
             \ 'html',
             \ 'swift' ] }
+    Plug 'psf/black'
     "Plug 'SirVer/ultisnips'
     "Plug 'vim-latex/vim-latex'
     "Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
@@ -493,7 +494,8 @@ let g:tex_flavor = "latex"
 "let g:indentLine_concealcursor = 'inc'
 "let g:indentLine_conceallevel = 2
 "let g:indentLine_setConceal = 0
-
+let g:indentLine_char = '┊'
+autocmd filetype help :IndentLinesDisable
  
 " }}}
 

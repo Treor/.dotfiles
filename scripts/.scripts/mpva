@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec mpv --sub-file-paths=Subs --pause --fs $1 >> /dev/null 2>&1 &
+exec bspc desktop -f ^3
