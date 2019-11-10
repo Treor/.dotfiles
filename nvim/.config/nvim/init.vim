@@ -1,11 +1,3 @@
-
-"███╗ ██╗███████╗ ██████╗ ██╗       ██╗██╗███╗   ███╗
-"████╗  ██║██╔════╝██╔═══██╗██║     ██║██║████╗ ████║
-"██╔██╗ ██║█████╗  ██║   ██║██║     ██║██║██╔████╔██║
-"██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-"██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-"╚═╝    ╚═══╝╚══════╝ ╚═════╝       ╚═══╝  ╚═╝╚═╝       ╚═╝
-
 " Plugin dependencies {{{
 
 " Installs Plug if it isn't allready installed
@@ -241,20 +233,23 @@ set mouse=a "Enable mouse support
 syntax on "Enable syntax
 set number "Set line number
 set rnu "relative number numeration
+
 " set confirm
 filetype indent plugin on
 set autowriteall "automatically save any changes made to the buffer before it is hidden.
+
 " use 4 spaces for tabs
 set tabstop=4 softtabstop=4 shiftwidth=4
+set expandtab
 
 " convert spaces to tabs when reading file
-autocmd! bufreadpost * set noexpandtab | retab! 4
+"autocmd! bufreadpost * set noexpandtab | retab! 4
 
 " convert tabs to spaces before writing file
-autocmd! bufwritepre * set expandtab | retab! 4
+"autocmd! bufwritepre * set expandtab | retab! 4
 
 " convert spaces to tabs after writing file (to show guides again)
-autocmd! bufwritepost * set noexpandtab | retab! 4i
+"autocmd! bufwritepost * set noexpandtab | retab! 4i
 "" Code Folding
 "" space open/closes folds
 nnoremap <space> za
@@ -548,7 +543,7 @@ command! -bang -nargs=* Rg
 
 "set grepprg=rg\ --vimgrep
 
-nnoremap <C-P> :Find<CR>
+nnoremap <C-P> :Find<space>
 
 " }}}
 
