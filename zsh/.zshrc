@@ -402,8 +402,8 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # /etc/motd
 #
 
-source ~/fzf/shell/completion.zsh
-source ~/fzf/shell/key-bindings.zsh
+source ~/.fzf/shell/completion.zsh
+source ~/.fzf/shell/key-bindings.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 if [ -e /etc/motd ]; then
   if ! cmp -s $HOME/.hushlogin /etc/motd; then

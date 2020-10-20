@@ -256,7 +256,7 @@ set expandtab
 nnoremap <space> za
 set foldmethod=marker
 
-let g:session_autoload = "no"
+let g:session_autosave = "no"
 
 " AutoGroup settings{{{
 
