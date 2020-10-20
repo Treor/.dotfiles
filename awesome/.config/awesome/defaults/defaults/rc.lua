@@ -10,8 +10,6 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
@@ -48,7 +46,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/treor/.config/awesome/themes/xresources/theme.lua")
+beautiful.init("/home/treor/.config/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -64,19 +62,19 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.fair,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    --awful.layout.suit.tile.left,
-    --awful.layout.suit.tile.bottom,
-    --awful.layout.suit.tile.top,
-    --awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
-    --awful.layout.suit.magnifier,
-    --awful.layout.suit.corner.nw,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.bottom,
+    awful.layout.suit.tile.top,
+    awful.layout.suit.fair,
+    awful.layout.suit.fair.horizontal,
+    awful.layout.suit.spiral,
+    awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.max,
+    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier,
+    awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
@@ -108,39 +106,9 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
-
--- Writes a string representation of the current layout in a textbox widget
-function updatelayoutbox(l, s)
-    local screen = s or 1
-    l.text = beautiful["layout_txt_" .. awful.layout.getname(awful.layout.get(screen))]
-end
-
 -- {{{ Wibar
 -- Create a textclock widget
-clock = wibox.widget({
-    font = beautiful.boldfont,
-    widget = wibox.widget.textclock('%H:%M'),
-})
-date = wibox.widget({
-    font = beautiful.font,
-    widget = wibox.widget.textclock('%A, %d %B '),
-})
-mytextclock = wibox.widget({
-    {
-        layout = wibox.container.margin,
-    },
-    {
-        widget = date,
-    },
-    {
-        widget = clock,
-    },
-    layout = wibox.layout.fixed.horizontal,  
-})
-
-mysystray = wibox.widget.systray({
-    opacity = 1,
-})
+mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -195,36 +163,25 @@ local function set_wallpaper(s)
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
---screen.connect_signal("property::geometry", set_wallpaper)
+screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
-    awful.spawn.with_shell("hsetroot -add '#3D4C5F' -add '#53E2AE' -gradient 0")
-    --set_wallpaper(s)
+    set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "dev", "web", "voice", "media", "misc"}, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
-    
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
-    s.txtlayoutbox = wibox.widget.textbox()
-    s.txtlayoutbox.text = beautiful["layout_txt_" .. awful.layout.getname(awful.layout.get(s))] 
-    awful.tag.attached_connect_signal(s, "property::selected", function ()
-        updatelayoutbox(s.txtlayoutbox, s) 
-    end)
-    awful.tag.attached_connect_signal(s, "property::layout", function ()
-        updatelayoutbox(s.txtlayoutbox, s) 
-    end)
-
-    s.txtlayoutbox:buttons(gears.table.join(
-                            awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
-    
+    s.mylayoutbox = awful.widget.layoutbox(s)
+    s.mylayoutbox:buttons(gears.table.join(
+                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
+                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
+                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
+                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -247,20 +204,17 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            --mylauncher,
+            mylauncher,
             s.mytaglist,
-            s.mylayoutbox,
-            s.txtlayoutbox,
             s.mypromptbox,
         },
-        nil,
-        --s.mytasklist, -- Middle widget
+        s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
-            --mysystray,
+            wibox.widget.systray(),
             mytextclock,
-            --s.mylayoutbox,
+            s.mylayoutbox,
         },
     }
 end)
@@ -537,7 +491,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
+      }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -609,5 +563,3 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
--- Autostart

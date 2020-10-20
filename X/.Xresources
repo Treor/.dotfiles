@@ -1,0 +1,28 @@
+! Black + DarkGrey
+*color0:  #3D4C5F
+*color8:  #56687E
+! DarkRed + Red
+*color1:  #F48FB1
+*color9:  #EE4F84
+! DarkGreen + Green
+*color2:  #A1EFD3
+*color10: #53E2AE
+! DarkYellow + Yellow
+*color3:  #F1FA8C
+*color11: #F1FF52
+! DarkBlue + Blue
+*color4:  #92B6F4
+*color12: #6498EF
+! DarkMagenta + Magenta
+*color5:  #BD99FF
+*color13: #985EFF
+!DarkCyan + Cyan (both not tango)
+*color6:  #87DFEB
+*color14: #24D1E7
+! LightGrey + White
+*color7:  #F8F8F2
+*color15: #E5E5E5
+! BG, FG, Cursor
+*background: #323F4E
+*foreground: #F8F8F2
+*cursor: #F8F8F2
