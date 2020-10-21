@@ -55,6 +55,8 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 
 call plug#begin('~/.config/nvim/plugged')
+    Plug 'justinmk/vim-sneak'
+    Plug 'unblevable/quick-scope'
     Plug 'liuchengxu/vim-which-key'
     Plug 'tpope/vim-eunuch'     " UNIX commands in VIM
     Plug 'tpope/vim-tbone'      " TMUX
@@ -318,7 +320,12 @@ let g:gitgutter_max_signs = 500  " default value
 " Use Ctrl+j/k to easily move a line
 let g:move_key_modifier = 'C'
 
+" vim-which-key mapping
 nnoremap <silent> <leader> : <c-u>WhichKey '\'<CR>
+
+" vim-quickscope mapping
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " CoC {{{
 
@@ -550,6 +557,20 @@ command! -bang -nargs=* Rg
 
 nnoremap <C-P> :Find<space>
 
+" }}}
+
+" Sneak {{{
+let g:sneak#label = 1
+
+" case insensitive sneak
+let g:sneak#use_ic_scs = 1
+
+" immediately move to the next instance of search, if you move the cursor sneak is back to default behavior
+let g:sneak#s_next = 1
+
+" remap so I can use , and ; with f and t
+map gS <Plug>Sneak_,
+map gs <Plug>Sneak_;
 " }}}
 
 nmap <F8> :TagbarToggle<CR>
