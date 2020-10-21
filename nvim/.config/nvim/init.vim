@@ -55,6 +55,7 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 
 call plug#begin('~/.config/nvim/plugged')
+    Plug 'liuchengxu/vim-which-key'
     Plug 'tpope/vim-eunuch'     " UNIX commands in VIM
     Plug 'tpope/vim-tbone'      " TMUX
     Plug 'tpope/vim-dadbod'     " DataBases
@@ -316,6 +317,8 @@ let g:gitgutter_max_signs = 500  " default value
 
 " Use Ctrl+j/k to easily move a line
 let g:move_key_modifier = 'C'
+
+nnoremap <silent> <leader> : <c-u>WhichKey '\'<CR>
 
 " CoC {{{
 
