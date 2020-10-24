@@ -74,6 +74,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'terryma/vim-multiple-cursors'
     Plug 'gregsexton/MatchTag'
     Plug 'jceb/vim-orgmode'
+    Plug 'vimwiki/vimwiki'
     Plug 'majutsushi/tagbar'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'honza/vim-snippets'
