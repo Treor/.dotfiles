@@ -258,7 +258,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
-            --mysystray,
+            mysystray,
             mytextclock,
             --s.mylayoutbox,
         },
@@ -268,9 +268,9 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    --awful.button({ }, 3, function () mymainmenu:toggle() end),
+    --awful.button({ }, 4, awful.tag.viewnext),
+    --awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 
@@ -484,6 +484,23 @@ clientbuttons = gears.table.join(
     end)
 )
 
+globalkeys = gears.table.join(globalkeys,
+-- Volume control
+    awful.key({}, "XF86AudioRaiseVolume",
+        function() awful.spawn("pamixer -i 3") end),
+    awful.key({}, "XF86AudioLowerVolume",
+        function() awful.spawn("pamixer -d 3") end),
+    awful.key({}, "XF86AudioMute",
+        function() awful.spawn("pamixer -t") end),
+    awful.key({modkey}, "XF86AudioMute",
+        function() awful.spawn("pamixer --default-source -t") end),
+    awful.key({}, "Print",
+        function() awful.spawn("shotf") end),
+    awful.key({"Alt"}, "Print",
+        function() awful.spawn("shotc") end),
+    awful.key({"Shift"}, "Print",
+        function() awful.spawn("shots") end)
+)
 -- Set keys
 root.keys(globalkeys)
 -- }}}
