@@ -321,8 +321,9 @@ let g:gitgutter_max_signs = 500  " default value
 " Use Ctrl+j/k to easily move a line
 let g:move_key_modifier = 'C'
 
-" vim-which-key mapping
+ "vim-which-key mapping
 nnoremap <silent> <leader> : <c-u>WhichKey '\'<CR>
+vnoremap <silent> <leader> : <c-u>WhichKey '\'<CR>
 
 " vim-quickscope mapping
 " Trigger a highlight in the appropriate direction when pressing these keys:
