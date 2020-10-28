@@ -14,7 +14,7 @@ local themes_path = gfs.get_themes_dir()
 local theme = {}
 -- load vector assets' generators for this theme
 
-theme.font          = "Noto Bold "..dpi(12)
+theme.font          = "Noto "..dpi(12)
 theme.boldfont      = "Noto Bold "..dpi(13)
 
 theme.bg_normal     = xrdb.background .."00"
