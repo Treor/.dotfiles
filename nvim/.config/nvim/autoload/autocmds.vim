@@ -1,3 +1,4 @@
+
 function! autocmds#attempt_select_last_file() abort
   let l:previous=expand('#:t')
   if l:previous !=# ''

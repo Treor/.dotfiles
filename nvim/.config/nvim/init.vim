@@ -148,11 +148,11 @@ set t_Co=256
     "set t_Co=16
 "endif
 
-"if exists('+termguicolors')
-    "let &t_8f ="\<Esc>[38;2;%lu;%lu;%lum"
-    "let &t_8b ="\<Esc>[48;2;%lu;%lu;%lum"
+if exists('+termguicolors')
+    let &t_8f ="\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b ="\<Esc>[48;2;%lu;%lu;%lum"
     "set termguicolors
-"endif
+endif
 
 "set guifont=Source\ Code\ Pro\ for\ Powerline:h20
 set laststatus=2
@@ -323,7 +323,7 @@ let g:move_key_modifier = 'C'
 
  "vim-which-key mapping
 nnoremap <silent> <leader> : <c-u>WhichKey '\'<CR>
-vnoremap <silent> <leader> : <c-u>WhichKey '\'<CR>
+vnoremap <silent> <leader> : <c-u>WhichKeyVisual '\'<CR>
 
 " vim-quickscope mapping
 " Trigger a highlight in the appropriate direction when pressing these keys:
@@ -539,7 +539,7 @@ let g:fzf_colors =
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%'), <bang>0)
 
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
@@ -552,12 +552,14 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \           : fzf#vim#with_preview('right:50%'),
   \   <bang>0)
 
 "set grepprg=rg\ --vimgrep
 
-nnoremap <C-P> :Find<space>
+"nnoremap <C-P> :GFiles<space>
+"nnoremap <C-P> :Find<space>
+nnoremap <C-P> :Find<CR>
 
 " }}}
 
@@ -595,3 +597,75 @@ endfunction
 source ~/.config/nvim/statusline.vim
 
 "}}}
+
+function! s:blur_statusline() abort
+  " Default blurred statusline (buffer number: filename).
+  "let l:blurred='%{s:gutterpadding(0)}'
+  let l:blurred='\ ' " space
+  let l:blurred.='\ ' " space
+  let l:blurred.='\ ' " space
+  let l:blurred.='%<' " truncation point
+  let l:blurred.='%f' " filename
+  let l:blurred.='%=' " split left/right halves (makes background cover whole)
+  call s:update_statusline(l:blurred, 'blur')
+endfunction
+
+function! s:focus_statusline() abort
+  " `setlocal statusline=` will revert to global 'statusline' setting.
+  call s:update_statusline('', 'focus')
+endfunction
+
+function! s:update_statusline(default, action) abort
+  let l:statusline = s:get_custom_statusline(a:action)
+  if type(l:statusline) == type('')
+    " Apply custom statusline.
+    execute 'setlocal statusline=' . l:statusline
+  elseif l:statusline == 0
+    " Do nothing.
+    "
+    " Note that order matters here because of Vimscript's insane coercion rules:
+    " when comparing a string to a number, the string gets coerced to 0, which
+    " means that all strings `== 0`. So, we must check for string-ness first,
+    " above.
+    return
+  else
+    execute 'setlocal statusline=' . a:default
+  endif
+endfunction
+
+function! s:get_custom_statusline(action) abort
+  if &ft == 'command-t'
+    " Will use Command-T-provided buffer name, but need to escape spaces.
+    return '\ \ ' . substitute(bufname('%'), ' ', '\\ ', 'g')
+  elseif &ft == 'diff' && exists('t:diffpanel') && t:diffpanel.bufname == bufname('%')
+    return 'Undotree\ preview' " Less ugly, and nothing really useful to show.
+  elseif &ft == 'undotree'
+    return 0 " Don't override; undotree does its own thing.
+  elseif &ft == 'nerdtree'
+    return 0 " Don't override; NERDTree does its own thing.
+  elseif &ft == 'qf'
+    if a:action == 'blur'
+      return 'Quickfix'
+    else
+      return g:WincentQuickfixStatusline
+    endif
+  endif
+
+  return 1 " Use default.
+endfunction
+
+" Call method on window enter
+augroup WindowManagement
+    autocmd!
+    autocmd WinEnter * call Handle_Win_Enter()
+    if has('statusline')
+        autocmd BufEnter,FocusGained,VimEnter,WinEnter * call s:focus_statusline()
+        autocmd FocusLost,WinLeave * call s:blur_statusline()
+    endif 
+augroup END
+
+" Change highlight group of active/inactive windows
+function! Handle_Win_Enter()
+  setlocal winhighlight=Normal:ActiveWindow,NormalNC:Unfocused
+endfunction
+autocmd VimResized * execute "normal! \<c-w>="

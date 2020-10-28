@@ -12,8 +12,11 @@ endif
 
 let g:colors_name = "lena"
 
-"}}}
+"}}} c
 " Vim UI {{{
+"hi Focused             ctermbg=16
+"hi Unfocused           ctermbg=0
+hi Unfocused           ctermbg=0
 hi Normal              ctermfg=7
 hi Cursor              ctermfg=7     ctermbg=1
 hi CursorLine          ctermbg=0     cterm=NONE
