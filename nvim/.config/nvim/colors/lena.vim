@@ -38,7 +38,7 @@ hi IncSearch           ctermfg=0     ctermbg=13    cterm=NONE
 hi Search              ctermfg=0     ctermbg=14
 hi StatusLine          ctermfg=5     ctermbg=0     cterm=NONE
 hi StatusLineNC        ctermfg=8     ctermbg=0     cterm=bold
-hi VertSplit           ctermfg=13    ctermbg=NONE     cterm=bold
+hi VertSplit           ctermfg=13    ctermbg=8     cterm=NONE
 hi TabLine             ctermfg=8     ctermbg=0     cterm=NONE
 hi TabLineSel          ctermfg=7     ctermbg=0
 hi Folded              ctermfg=4     ctermbg=0     cterm=bold,italic

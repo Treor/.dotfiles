@@ -156,7 +156,7 @@ endif
 
 "set guifont=Source\ Code\ Pro\ for\ Powerline:h20
 set laststatus=2
-
+set fillchars+=vert:\ 
 "set list lcs=tab:\|\ 
 
 "python3 from powerline.vim import setup as powerline_setup
@@ -600,7 +600,7 @@ source ~/.config/nvim/statusline.vim
 
 function! s:blur_statusline() abort
   " Default blurred statusline (buffer number: filename).
-  "let l:blurred='%{s:gutterpadding(0)}'
+  "let l:blurred='%#MyStatuslineAccent#'
   let l:blurred='\ ' " space
   let l:blurred.='\ ' " space
   let l:blurred.='\ ' " space
