@@ -138,31 +138,7 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
  "}}}
-
-" Colours and UI {{{
-
-source ~/.config/nvim/colors/lena.vim
-set t_Co=256
-
-"if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
-    "set t_Co=16
-"endif
-
-if exists('+termguicolors')
-    let &t_8f ="\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b ="\<Esc>[48;2;%lu;%lu;%lum"
-    "set termguicolors
-endif
-
-"set guifont=Source\ Code\ Pro\ for\ Powerline:h20
-set laststatus=2
-set fillchars+=vert:\ 
-"set list lcs=tab:\|\ 
-
-"python3 from powerline.vim import setup as powerline_setup
-"python3 powerline_setup()
-"python3 del powerline_setup
-
+ 
 " NerdTree {{{
 
 " Open NERDTree when no file(s) is selectedd
@@ -229,38 +205,7 @@ noremap <F5> :NERDTreeToggle<cr><c-w>p
 
 "}}}
 
-" }}}
-
 " General settings {{{
-set directory^=$HOME/.vim/tmp// " Place all swap files under .vim/tmp
-set clipboard+=unnamed " Let vim use the systems clipboard
-set mouse=a "Enable mouse support
-syntax on "Enable syntax
-set number "Set line number
-set rnu "relative number numeration
-
-" set confirm
-filetype indent plugin on
-set autowriteall "automatically save any changes made to the buffer before it is hidden.
-
-" use 4 spaces for tabs
-set tabstop=4 softtabstop=4 shiftwidth=4
-set expandtab
-
-" convert spaces to tabs when reading file
-"autocmd! bufreadpost * set noexpandtab | retab! 4
-
-" convert tabs to spaces before writing file
-"autocmd! bufwritepre * set expandtab | retab! 4
-
-" convert spaces to tabs after writing file (to show guides again)
-"autocmd! bufwritepost * set noexpandtab | retab! 4i
-"" Code Folding
-"" space open/closes folds
-nnoremap <space> za
-set foldmethod=marker
-
-let g:session_autosave = "no"
 
 " AutoGroup settings{{{
 
@@ -307,19 +252,12 @@ endfunction
 "Bind the BufSel() function to a user-command
 command! -nargs=1 Bs :call BufSel("<args>")
 
-" Forses new windows to open to the right and bottom 
-set splitbelow
-set splitright
-
 "}}}
 
  " Settings for variopus plugins {{{
 
 " Keeps nvim snappy (disable gitgutter if a file has more than n changes)
 let g:gitgutter_max_signs = 500  " default value
-
-" Use Ctrl+j/k to easily move a line
-let g:move_key_modifier = 'C'
 
  "vim-which-key mapping
 nnoremap <silent> <leader> : <c-u>WhichKey '\'<CR>
@@ -594,7 +532,7 @@ function! StatusDiagnostic() abort
         return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
 
-source ~/.config/nvim/statusline.vim
+"source ~/.config/nvim/statusline.vim
 
 "}}}
 
