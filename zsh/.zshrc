@@ -222,6 +222,7 @@ source $HOME/.zsh/exports
 source $HOME/.zsh/hash
 source $HOME/.zsh/path
 source $HOME/.zsh/vars
+source $HOME/.zsh/fff
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
