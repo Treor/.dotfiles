@@ -113,7 +113,7 @@ call plug#begin('~/.config/nvim/plugged')
             \ 'ruby',
             \ 'html',
             \ 'swift' ] }
-    Plug 'psf/black'
+    "Plug 'psf/black'
     "Plug 'SirVer/ultisnips'
     "Plug 'vim-latex/vim-latex'
     "Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
