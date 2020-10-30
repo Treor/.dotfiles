@@ -159,6 +159,7 @@ set hidden                            " allows you to hide buffers with unsaved 
 let g:move_key_modifier = 'C'
 
 let g:session_autosave = "no"
+let g:session_autoload = "no"
 
 set cursorline
 set scrolloff=3
