@@ -133,7 +133,7 @@ endif
 set textwidth=80                      " automatically hard wrap at 80 columns
 
 set updatecount=80                    " update swapfiles every 80 typed chars
-set updatetime=2000                   " CursorHold interval
+set updatetime=300                   " CursorHold interval
 
 if has('virtualedit')
   set virtualedit=block               " allow cursor to move where there is no text in visual block mode
@@ -150,7 +150,7 @@ filetype indent plugin on
 set autowriteall                      "Automatically save any changes made to the buffer before it is hidden.
 
 " use 4 spaces for tabs
-set tabstop=2 shiftwidth=2
+set tabstop=4 shiftwidth=4
 set expandtab
 
 set hidden                            " allows you to hide buffers with unsaved changes without being prompted
@@ -164,6 +164,10 @@ let g:session_autoload = "no"
 set cursorline
 set scrolloff=3
 
+" Better display for messages
+set cmdheight=2
 
+" always show signcolumns
+set signcolumn=yes
 
 set diffopt+=foldcolumn:0 
