@@ -30,6 +30,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'    " GitHub (extension for vim-fugitive)
     Plug 'scrooloose/nerdcommenter'
+    Plug 'mcchrish/nnn.vim'
     Plug 'scrooloose/nerdtree'
     Plug 'xolox/vim-session'
     Plug 'xolox/vim-misc'
