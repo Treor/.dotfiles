@@ -75,6 +75,11 @@ call plug#begin('~/.config/nvim/plugged')
             \ 'ruby',
             \ 'html',
             \ 'swift' ] }
+    Plug 'andrewradev/splitjoin.vim'
+    Plug 'andrewradev/sideways.vim'
+    Plug 'andrewradev/switch.vim'
+    Plug 'rust-lang/rust.vim'
+
     "Plug 'psf/black'
     "Plug 'SirVer/ultisnips'
     "Plug 'vim-latex/vim-latex'
