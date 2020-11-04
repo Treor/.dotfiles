@@ -201,7 +201,7 @@ endfunction
 " Call method on window enter
 augroup WindowManagement
     autocmd!
-    autocmd WinEnter * call Handle_Win_Enter()
+    autocmd BufEnter,FocusGained,VimEnter,WinEnter * call Handle_Win_Enter()
     "if has('statusline')
         "autocmd BufEnter,FocusGained,VimEnter,WinEnter * call s:focus_statusline()
         "autocmd FocusLost,WinLeave * call s:blur_statusline()
