@@ -12,9 +12,9 @@ endfunction
 
 function! SetModifiedSymbolInactive() " {{{
     if &modifiable && &modified
-        hi LightlineLeft_inactive_1 ctermbg=8 cterm=bold ctermfg=1
+        hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=1
     else
-        hi LightlineLeft_inactive_1 ctermbg=8 cterm=bold ctermfg=0
+        hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=0
     endif
     return '●'
 endfunction
@@ -48,12 +48,16 @@ let g:lightline = {
             \            [ ] ] 
             \ },
             \ 'inactive': {
-            \   'left': [ [ 'filename' ],
-            \             [ 'modifiedinactive' ]]
+            \   'left': [ [  ],
+            \             [ 'readonly', 'filename' ],
+            \             [ 'modifiedinactive' ]],
+            \   'right': [ [ 'filetype' ], 
+            \              [ 'location' ] ]
             \ },
             \ 'component': {
             \   'location': '%P/%L | %l:%-2c',
             \   'filetype': '%{&ft!=#""?&ft:""}',
+            \   'placeholder': ' ● ',
             \ },
             \ 'component_function': {
             \   'readonly': 'LightlineReadonly',
