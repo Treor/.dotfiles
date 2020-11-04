@@ -80,14 +80,15 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'andrewradev/sideways.vim'
     Plug 'andrewradev/switch.vim'
     Plug 'rust-lang/rust.vim'
-
+    Plug 'itchyny/lightline.vim'
     "Plug 'psf/black'
     "Plug 'SirVer/ultisnips'
     "Plug 'vim-latex/vim-latex'
     "Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
     "Plug 'zchee/deoplete-jedi', {'for': ['python', 'python3','djangohtml'], 'do': 'pip install jedi;pip3 install jedi'}
     "Plug 'wokalski/autocomplete-flow' " deoplete src for js
-    "Plug 'chriskempson/base16-vim', {'do': 'git checkout dict_fix'}
+    Plug 'chriskempson/base16-vim', {'do': 'git checkout dict_fix'}
+    Plug 'mike-hearn/base16-vim-lightline'
     " For func argument completion
     "Plug 'Shougo/neosnippet'
     "Plug 'Shougo/neosnippet-snippets'
@@ -201,10 +202,10 @@ endfunction
 augroup WindowManagement
     autocmd!
     autocmd WinEnter * call Handle_Win_Enter()
-    if has('statusline')
-        autocmd BufEnter,FocusGained,VimEnter,WinEnter * call s:focus_statusline()
-        autocmd FocusLost,WinLeave * call s:blur_statusline()
-    endif 
+    "if has('statusline')
+        "autocmd BufEnter,FocusGained,VimEnter,WinEnter * call s:focus_statusline()
+        "autocmd FocusLost,WinLeave * call s:blur_statusline()
+    "endif 
 augroup END
 
 " Change highlight group of active/inactive windows
