@@ -13,6 +13,7 @@ endif
 " Plugin section
 
 call plug#begin('~/.config/nvim/plugged')
+    Plug 'mg979/vim-visual-multi'
     Plug 'justinmk/vim-sneak'
     Plug 'unblevable/quick-scope'
     Plug 'liuchengxu/vim-which-key'
@@ -26,7 +27,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-rhubarb'    " GitHub (extension for vim-fugitive)
     Plug 'scrooloose/nerdcommenter'
     Plug 'mcchrish/nnn.vim'
-    Plug 'terryma/vim-multiple-cursors'
     Plug 'jceb/vim-orgmode'
     Plug 'vimwiki/vimwiki'
     Plug 'majutsushi/tagbar'
