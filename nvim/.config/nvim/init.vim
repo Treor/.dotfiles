@@ -24,58 +24,32 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-tbone'      " TMUX
     Plug 'tpope/vim-dadbod'     " DataBases
     Plug 'tpope/vim-obsession'
-    "Plug 'tpope/vim-endwise'
+    Plug 'tpope/vim-endwise'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-speeddating'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'    " GitHub (extension for vim-fugitive)
     Plug 'scrooloose/nerdcommenter'
     Plug 'mcchrish/nnn.vim'
-    "Plug 'scrooloose/nerdtree'
-    Plug 'xolox/vim-session'
-    Plug 'xolox/vim-misc'
     Plug 'terryma/vim-multiple-cursors'
-    Plug 'gregsexton/MatchTag'
     Plug 'jceb/vim-orgmode'
     Plug 'vimwiki/vimwiki'
     Plug 'majutsushi/tagbar'
-    "Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'honza/vim-snippets'
     Plug 'matze/vim-move'
     Plug 'Yggdroot/indentLine'
-    Plug 'w0rp/ale'
-    Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
     Plug 'airblade/vim-gitgutter'
-    Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
-    Plug 'PotatoesMaster/i3-vim-syntax'
     Plug 'lilydjwg/colorizer', {'do': 'make'} " colorize rgb rgba texts
-    Plug 'ryanoasis/vim-devicons'
-    "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    "Plug 'ctrlpvim/ctrlp.vim'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    Plug 'Shougo/neco-vim'
     Plug 'neoclide/coc-neco'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'prettier/vim-prettier', {
         \ 'do': 'yarn install',
         \ 'branch': 'release/1.x',
         \ 'for': [
-            \ 'javascript',
-            \ 'typescript',
-            \ 'css',
-            \ 'less',
-            \ 'scss',
             \ 'json',
-            \ 'graphql',
             \ 'markdown',
-            \ 'vue',
-            \ 'lua',
-            \ 'php',
-            \ 'python',
-            \ 'ruby',
-            \ 'html',
-            \ 'swift' ] }
+            \ 'lua' ] }
     Plug 'andrewradev/splitjoin.vim'
     Plug 'andrewradev/sideways.vim'
     Plug 'andrewradev/switch.vim'
@@ -83,27 +57,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'itchyny/lightline.vim'
     Plug 'justinmk/vim-dirvish'
     Plug 'kristijanhusak/vim-dirvish-git'
-    "Plug 'psf/black'
-    "Plug 'SirVer/ultisnips'
-    "Plug 'vim-latex/vim-latex'
-    "Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
-    "Plug 'zchee/deoplete-jedi', {'for': ['python', 'python3','djangohtml'], 'do': 'pip install jedi;pip3 install jedi'}
-    "Plug 'wokalski/autocomplete-flow' " deoplete src for js
-    Plug 'chriskempson/base16-vim', {'do': 'git checkout dict_fix'}
-    Plug 'mike-hearn/base16-vim-lightline'
-    " For func argument completion
-    "Plug 'Shougo/neosnippet'
-    "Plug 'Shougo/neosnippet-snippets'
-    "Plug 'wincent/command-t', {
-    "\  'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-    "\  }
-    "if has('nvim')
-        "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    "else
-        "Plug 'Shougo/deoplete.nvim'
-        "Plug 'roxma/nvim-yarp'
-        "Plug 'roxma/vim-hug-neovim-rpc'
-    "endif
+    Plug 'xolox/vim-session'
+    Plug 'xolox/vim-misc'
+    Plug 'ryanoasis/vim-devicons'
 
 " Initialize plugin system
 call plug#end()
