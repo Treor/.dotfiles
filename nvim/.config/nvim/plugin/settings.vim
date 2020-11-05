@@ -156,7 +156,7 @@ set expandtab
 set hidden                            " allows you to hide buffers with unsaved changes without being prompted
 
 " Use Ctrl+j/k to easily move a line
-let g:move_key_modifier = 'C'
+"let g:move_key_modifier = 'C'
 
 let g:session_autosave = "no"
 let g:session_autoload = "no"
