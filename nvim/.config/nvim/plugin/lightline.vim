@@ -3,10 +3,18 @@
 "endfunction
 function! SetModifiedSymbol()
     if &modifiable
-        if &modified
-            hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=1
+        if &ft !~? 'help' && &readonly
+            if &modified
+                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=13
+            else
+                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=10
+            endif
         else
-            hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=8
+            if &modified
+                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=1
+            else
+                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=8
+            endif
         endif
         return '●'
     else 
@@ -16,10 +24,18 @@ endfunction
 
 function! SetModifiedSymbolInactive()
     if &modifiable
-        if &modified
-            hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=1
+        if &ft !~? 'help' && &readonly
+            if &modified
+                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=5
+            else
+                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=2
+            endif
         else
-            hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=0
+            if &modified
+                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=1
+            else
+                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=0
+            endif
         endif
         return '●'
     else 
@@ -49,7 +65,7 @@ let g:lightline = {
             \ },
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
-            \             [ 'readonly', 'filename' ],
+            \             [ 'filename' ],
             \             [ 'modified' ]],
             \ 'right': [ [ 'filetype' ],
             \            [ 'location' ],
@@ -57,7 +73,7 @@ let g:lightline = {
             \ },
             \ 'inactive': {
             \   'left': [ [  ],
-            \             [ 'readonly', 'filename' ],
+            \             [  'filename' ],
             \             [ 'modifiedinactive' ]],
             \   'right': [ [ 'filetype' ], 
             \              [ 'location' ] ]
