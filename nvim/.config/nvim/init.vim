@@ -31,7 +31,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-rhubarb'    " GitHub (extension for vim-fugitive)
     Plug 'scrooloose/nerdcommenter'
     Plug 'mcchrish/nnn.vim'
-    Plug 'scrooloose/nerdtree'
+    "Plug 'scrooloose/nerdtree'
     Plug 'xolox/vim-session'
     Plug 'xolox/vim-misc'
     Plug 'terryma/vim-multiple-cursors'
@@ -39,7 +39,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'jceb/vim-orgmode'
     Plug 'vimwiki/vimwiki'
     Plug 'majutsushi/tagbar'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
+    "Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'honza/vim-snippets'
     Plug 'matze/vim-move'
     Plug 'Yggdroot/indentLine'
@@ -50,7 +50,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'PotatoesMaster/i3-vim-syntax'
     Plug 'lilydjwg/colorizer', {'do': 'make'} " colorize rgb rgba texts
     Plug 'ryanoasis/vim-devicons'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     "Plug 'ctrlpvim/ctrlp.vim'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -81,6 +81,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'andrewradev/switch.vim'
     Plug 'rust-lang/rust.vim'
     Plug 'itchyny/lightline.vim'
+    Plug 'justinmk/vim-dirvish'
+    Plug 'kristijanhusak/vim-dirvish-git'
     "Plug 'psf/black'
     "Plug 'SirVer/ultisnips'
     "Plug 'vim-latex/vim-latex'
