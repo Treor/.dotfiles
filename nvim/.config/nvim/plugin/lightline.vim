@@ -1,22 +1,30 @@
 "function! LightlineModified()
     "return &modifiable && &modified ? '●' : ''
 "endfunction
-function! SetModifiedSymbol() " {{{
-    if &modifiable && &modified
-        hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=1
-    else
-        hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=8
+function! SetModifiedSymbol()
+    if &modifiable
+        if &modified
+            hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=1
+        else
+            hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=8
+        endif
+        return '●'
+    else 
+        return ''
     endif
-    return '●'
 endfunction
 
-function! SetModifiedSymbolInactive() " {{{
-    if &modifiable && &modified
-        hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=1
-    else
-        hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=0
+function! SetModifiedSymbolInactive()
+    if &modifiable
+        if &modified
+            hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=1
+        else
+            hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=0
+        endif
+        return '●'
+    else 
+        return ''
     endif
-    return '●'
 endfunction
 
 function! LightlineReadonly()
@@ -56,7 +64,7 @@ let g:lightline = {
             \ },
             \ 'component': {
             \   'location': '%P/%L | %l:%-2c',
-            \   'filetype': '%{&ft!=#""?&ft:""}',
+            \   'filetype': '%{&ft!=#""?&ft:"-"}',
             \   'placeholder': ' ● ',
             \ },
             \ 'component_function': {
