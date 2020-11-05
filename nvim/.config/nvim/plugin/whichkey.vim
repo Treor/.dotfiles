@@ -5,6 +5,11 @@ vnoremap <silent> <leader> : <c-u>WhichKeyVisual '\'<CR>
 
 let g:which_key_map = {}
 
+hi WhichKey ctermfg=2 cterm=bold
+hi WhichKeySeparator ctermfg=3 cterm=bold
+hi WhichKeyGroup ctermfg=4 cterm=bold
+hi WhichKeyDesc ctermfg=4 cterm=bold
+hi WhichKeyFloating ctermfg=15 cterm=bold
 
 let g:which_key_map.h = {
     \ 'name'    : '+GitGutter',
