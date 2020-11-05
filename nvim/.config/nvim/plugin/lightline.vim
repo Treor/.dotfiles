@@ -63,7 +63,7 @@ let g:lightline = {
             \              [ 'location' ] ]
             \ },
             \ 'component': {
-            \   'location': '%P/%L | %l:%-2c',
+            \   'location': '%P|%L|%l:%-2c',
             \   'filetype': '%{&ft!=#""?&ft:"-"}',
             \   'placeholder': ' ● ',
             \ },
