@@ -10,6 +10,8 @@ if exists("syntax_on")
   syntax reset
 endif
 
+let g:colors_name="bruh"
+
 "}}} c
 " Vim UI {{{
 "hi Focused             ctermbg=16
