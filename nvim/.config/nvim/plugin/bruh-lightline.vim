@@ -67,4 +67,4 @@ let s:p.tabline.right = [ [ s:black, s:cyan ] ]
 let s:p.normal.error = [ [ s:red, s:black ] ]
 let s:p.normal.warning = [ [ s:yellow, s:black ] ]
 
-let g:lightline#colorscheme#bruh#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#bruhlightline#palette = lightline#colorscheme#flatten(s:p)

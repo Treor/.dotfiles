@@ -48,7 +48,7 @@ function! LightlineReadonly()
 endfunction
 
 let g:lightline = {
-            \ 'colorscheme': 'bruh',
+            \ 'colorscheme': 'bruhlightline',
             \ 'subseparator': { 'left': '', 'right': '' },
             \ 'mode_map': {
             \   'n' : ' N ',

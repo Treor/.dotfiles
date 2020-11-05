@@ -10,6 +10,8 @@ if exists('+termguicolors')
     "set termguicolors
 endif
 
+colorscheme bruh
+
 " }}}
 
 " {{{ Swap/Backup/Undo files
