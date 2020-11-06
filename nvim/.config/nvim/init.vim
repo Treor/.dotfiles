@@ -55,4 +55,5 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'xolox/vim-session'
     Plug 'xolox/vim-misc'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'bagrat/vim-buffet'
 call plug#end()

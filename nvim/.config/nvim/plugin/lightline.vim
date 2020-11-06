@@ -43,10 +43,6 @@ function! SetModifiedSymbolInactive()
     endif
 endfunction
 
-function! LightlineReadonly()
-    return &ft !~? 'help' && &readonly ? '[RO]' : ''
-endfunction
-
 let g:lightline = {
             \ 'colorscheme': 'bruhlightline',
             \ 'subseparator': { 'left': '', 'right': '' },
@@ -77,6 +73,9 @@ let g:lightline = {
             \             [ 'modifiedinactive' ]],
             \   'right': [ [ 'filetype' ], 
             \              [ 'location' ] ]
+            \ },
+            \ 'enable': {
+            \   'tabline': 0
             \ },
             \ 'component': {
             \   'location': '%P|%L|%l:%-2c',
