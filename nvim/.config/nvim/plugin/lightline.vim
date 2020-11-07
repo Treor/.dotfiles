@@ -5,15 +5,15 @@ function! SetModifiedSymbol()
     if &modifiable
         if &ft !~? 'help' && &readonly
             if &modified
-                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=13
+                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=13 guibg=#3D4C5F guifg=#985EFF
             else
-                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=10
+                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=10 guibg=#3D4C5F guifg=#53E2AE
             endif
         else
             if &modified
-                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=1
+                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=1 guibg=#3D4C5F guifg=#F48FB1
             else
-                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=8
+                hi LightlineLeft_active_2 ctermbg=0 cterm=bold ctermfg=8 guibg=#3D4C5F guifg=#56687E
             endif
         endif
         return '●'
@@ -26,15 +26,15 @@ function! SetModifiedSymbolInactive()
     if &modifiable
         if &ft !~? 'help' && &readonly
             if &modified
-                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=5
+                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=5 guibg=#56687E guifg=#BD99FF
             else
-                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=2
+                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=2 guibg=#56687E guifg=#A1EFD3
             endif
         else
             if &modified
-                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=1
+                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=1 guibg=#56687E guifg=#F48FB1
             else
-                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=0
+                hi LightlineLeft_inactive_2 ctermbg=8 cterm=bold ctermfg=0 guibg=#56687E guifg=#3D4C5F
             endif
         endif
         return '●'

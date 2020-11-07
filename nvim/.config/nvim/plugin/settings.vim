@@ -173,3 +173,6 @@ set cmdheight=2
 set signcolumn=yes
 
 set diffopt+=foldcolumn:0 
+
+"does not show mode in command line
+set showmode!

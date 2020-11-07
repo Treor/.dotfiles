@@ -1,11 +1,5 @@
-" =============================================================================
-" Filename: autoload/lightline/colorscheme/darcula.vim
-" Author: kkopec
-" License: MIT License
-" Last Change: 2017/02/11 21:18:54.
-" =============================================================================
-let s:gray = [ '#ffc3c1', 8 ]
-"let s:gray = [ '#323F4E', 8 ]
+"let s:gray = [ '#ffc3c1', 8 ]
+let s:gray = [ '#56687E', 8 ]
 
 let s:foreground = [ '#F8F8F2', 7 ]
 let s:cursor = [ '#F8F8F2', 7 ]
