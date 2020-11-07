@@ -3,3 +3,4 @@ nvim/.config/nvim/plugged/*
 session.vim
 Session.vim
 tags
+*.un~
