@@ -4,3 +4,4 @@ session.vim
 Session.vim
 tags
 *.un~
+tmux/.tmux/resurrect/*
