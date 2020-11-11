@@ -3,7 +3,11 @@ call which_key#register('\', "g:which_key_map")
 nnoremap <silent> <leader> : <c-u>WhichKey '\'<CR>
 vnoremap <silent> <leader> : <c-u>WhichKeyVisual '\'<CR>
 
-let g:which_key_map = {}
+let g:which_key_map = {
+            \ '\': {
+            \ 'name': '+MultipleCursors',
+            \ },
+            \ }
 
 hi WhichKey ctermfg=2 cterm=bold guifg=#A1EFD3
 hi WhichKeySeparator ctermfg=3 cterm=bold guifg=#F1FA8C
