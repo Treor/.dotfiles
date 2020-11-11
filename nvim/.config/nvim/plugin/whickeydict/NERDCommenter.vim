@@ -1,0 +1,16 @@
+let g:which_key_map.c = {
+    \ 'name'    : '+Comment',
+    \ 'SPC'     : ['<plug>NERDCommenterToggle'    , 'Toggle'],
+    \ '$'       : ['<plug>NERDCommenterToEOL'    , 'ToEOL'],
+    \ 's'       : ['<plug>NERDCommenterSexy'    , 'Sexy'],
+    \ 'a'       : ['<plug>NERDCommenterAltDelims'    , 'AlternativeDelimeters'],
+    \ 'b'       : ['<plug>NERDCommenterAlignBoth'    , 'AlignBoth'],
+    \ 'c'       : ['<plug>NERDCommenterComment'    , 'Comment'],
+    \ 'A'       : ['<plug>NERDCommenterAppend'    , 'Append'],
+    \ 'i'       : ['<plug>NERDCommenterInvert'    , 'Invert'],
+    \ 'l'       : ['<plug>NERDCommenterAlignLeft'    , 'AlignLeft'],
+    \ 'n'       : ['<plug>NERDCommenterNested'    , 'Nested'],
+    \ 'm'       : ['<plug>NERDCommenterMinimal'    , 'Minimal'],
+    \ 'y'       : ['<plug>NERDCommenterYank'    , 'Yank'],
+    \ 'u'       : ['<plug>NERDCommenterUncomment'    , 'Uncomment'],
+    \}
