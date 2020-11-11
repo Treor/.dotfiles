@@ -58,4 +58,5 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'bagrat/vim-buffet'
     "Plug 'kyazdani42/nvim-web-devicons'
     "Plug 'romgrk/barbar.nvim'
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
 call plug#end()
