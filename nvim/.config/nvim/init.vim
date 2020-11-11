@@ -56,4 +56,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'xolox/vim-misc'
     Plug 'ryanoasis/vim-devicons'
     Plug 'bagrat/vim-buffet'
+    "Plug 'kyazdani42/nvim-web-devicons'
+    "Plug 'romgrk/barbar.nvim'
 call plug#end()
