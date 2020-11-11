@@ -44,4 +44,3 @@ command! -bang -nargs=* Rg
 
 "nnoremap <C-P> :GFiles<space>
 "nnoremap <C-P> :Find<space>
-nnoremap <C-P> :Find<CR>
