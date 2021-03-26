@@ -74,9 +74,6 @@ let g:lightline = {
             \   'right': [ [ 'filetype' ], 
             \              [ 'location' ] ]
             \ },
-            \ 'enable': {
-            \   'tabline': 0
-            \ },
             \ 'component': {
             \   'location': '%P|%L|%l:%-2c',
             \   'filetype': '%{&ft!=#""?&ft:"-"}',

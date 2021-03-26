@@ -26,7 +26,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'    " GitHub (extension for vim-fugitive)
     Plug 'scrooloose/nerdcommenter'
-    Plug 'mcchrish/nnn.vim'
+    "Plug 'mcchrish/nnn.vim'
     Plug 'jceb/vim-orgmode'
     Plug 'vimwiki/vimwiki'
     Plug 'majutsushi/tagbar'
@@ -55,8 +55,15 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'xolox/vim-session'
     Plug 'xolox/vim-misc'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'bagrat/vim-buffet'
-    "Plug 'kyazdani42/nvim-web-devicons'
+    "Plug 'bagrat/vim-buffet'
+
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'kyazdani42/nvim-tree.lua'
     "Plug 'romgrk/barbar.nvim'
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
 call plug#end()
