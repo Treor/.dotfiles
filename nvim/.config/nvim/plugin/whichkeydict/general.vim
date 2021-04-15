@@ -3,4 +3,5 @@ let g:which_key_map.g = {
             \ 's': ['Gstatus', 'Status'],
             \ 'c': ['Gcommit', 'Commit'],
             \ 'p': ['Gpush', 'Push'],
+            \ 'b': ['GBrowse', 'Browse'],
             \}
