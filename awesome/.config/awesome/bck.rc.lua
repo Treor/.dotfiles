@@ -20,7 +20,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-local keys = require("keys")
+local keys = require("configuration.keys.global")
+root.keys(keys.globalkeys)
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -184,14 +185,14 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
+        buttons = keys.taglist_buttons
     }
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = keys.tasklist_buttons
     }
 
     -- Create the wibox
