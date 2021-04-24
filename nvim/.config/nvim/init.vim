@@ -36,8 +36,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'lilydjwg/colorizer', {'do': 'make'} " colorize rgb rgba texts
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    Plug 'neoclide/coc-neco'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    "Plug 'neoclide/coc-neco'
+    "Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'prettier/vim-prettier', {
         \ 'do': 'yarn install',
         \ 'branch': 'release/1.x',
@@ -64,6 +64,21 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-
+    Plug 'nvim-treesitter/playground'
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'hrsh7th/vim-vsnip'
+
+    Plug 'haishanh/night-owl.vim'
+    Plug 'ghifarit53/tokyonight-vim'
+    Plug 'drewtempelmeyer/palenight.vim'
+
+    "Plug 'TaDaa/vimade'
 call plug#end()
+
+"Temp section
+let g:palenight_terminal_italics=1
+
+let g:vimade = {}
+let g:vimade.enabletreesitter=1

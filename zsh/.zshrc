@@ -429,3 +429,5 @@ _fzf_compgen_dir() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias luamake=/home/treor/Downloads/cloned/lua-language-server/3rd/luamake/luamake
