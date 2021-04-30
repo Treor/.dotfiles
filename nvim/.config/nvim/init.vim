@@ -68,7 +68,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/nvim-compe'
+    Plug 'rafamadriz/friendly-snippets'
     Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
 
     Plug 'haishanh/night-owl.vim'
     Plug 'ghifarit53/tokyonight-vim'
