@@ -11,28 +11,33 @@ local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
 -- inherit default theme
-local theme = {}
+local theme = dofile(themes_path .. "default/theme.lua")
 -- load vector assets' generators for this theme
 
-theme.font          = "Noto "..dpi(12)
-theme.boldfont      = "Noto Bold "..dpi(13)
+theme.font          = "sans-serif Bold"..dpi(8)
+theme.iconfont      = "sans-serif Bold"..dpi(6)
+theme.boldfont      = "sans-serif Bold "..dpi(10)
 
-theme.bg_normal     = xrdb.background .."00"
+--theme.bg_normal     = xrdb.background .."00"
+theme.bg_normal     = xrdb.background
 theme.bg_focus      = theme.bg_normal
 theme.bg_urgent     = theme.bg_normal
 theme.bg_minimize   = theme.bg_normal
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = xrdb.foreground
-theme.fg_focus      = xrdb.color14
+theme.fg_focus      = xrdb.color4
 theme.fg_urgent     = xrdb.color9
 theme.fg_minimize   = xrdb.color8
 
 theme.useless_gap   = dpi(3)
+theme.gap_single_client = true
 theme.border_width  = dpi(1)
 theme.border_normal = xrdb.color0
 theme.border_focus  = theme.bg_focus
 theme.border_marked = xrdb.color10
+
+theme.underline_color = xrdb.color14
 
 -- There are other variable sets
 -- overriding the default one when
@@ -45,24 +50,19 @@ theme.border_marked = xrdb.color10
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
+theme.taglist_fg_empty = xrdb.color0
+theme.taglist_fg_occupied = xrdb.color8
+theme.taglist_fg_focus = xrdb.color4
+
 theme.tooltip_fg = theme.fg_normal
 theme.tooltip_bg = theme.bg_normal
 
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_spacing = dpi(2)
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(16)
+theme.menu_height = dpi(25)
 theme.menu_width  = dpi(100)
 
 -- You can add as many variables as
@@ -117,7 +117,7 @@ theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
-theme.layout_txt_tile       = "[t]" 
+theme.layout_txt_tile       = "[t]"
 theme.layout_txt_tileleft   = "[l]"
 theme.layout_txt_tilebottom = "[b]"
 theme.layout_txt_tiletop    = "[tt]"
@@ -171,8 +171,8 @@ theme = theme_assets.recolor_titlebar(
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
- --theme.icon_theme = Luv
- theme.icon_theme = nil
+ theme.icon_theme = "/usr/share/icons/Papirus"
+ --theme.icon_theme = "Papirus"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
@@ -180,7 +180,7 @@ theme.awesome_icon = theme_assets.awesome_icon(
 )
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(0)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )
