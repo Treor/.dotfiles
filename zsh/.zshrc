@@ -79,6 +79,10 @@ zstyle ':vcs_info:hg*:*' get-mq false
 zstyle ':vcs_info:hg*+gen-hg-bookmark-string:*' hooks hg-bookmarks
 zstyle ':vcs_info:hg*+set-message:*' hooks hg-message
 
+function pac() {
+    yay -Sl |awk '{print $2($4==""?"":"*")}' | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S
+}
+
 function +vi-hg-bookmarks() {
   emulate -L zsh
   if [[ -n "${hook_com[hg-active-bookmark]}" ]]; then
