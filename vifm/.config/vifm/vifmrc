@@ -204,8 +204,6 @@ filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
           \*.as[fx]},
          \<video/*>
         \ {View using mpv}
-        \ mpva %f,
-        \ {View using mpv}
         \ mpv --pause --fs %f >> /dev/null 2>&1 &,
         \ {View using ffplay}
         \ ffplay -fs -autoexit %f,
