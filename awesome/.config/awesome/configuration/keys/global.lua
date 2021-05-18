@@ -94,7 +94,7 @@ local globalKeys = awful.util.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey, "Shift" },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
@@ -177,8 +177,9 @@ globalKeys = awful.util.table.join(globalKeys,
         function() awful.spawn("shotc") end),
     awful.key({"Shift"}, "Print",
         function() awful.spawn("shots") end),
-    awful.key({ modkey }, "r",
-        function() awful.spawn("rofi -show drun") end)
+    awful.key({ modkey }, "d",
+        function() awful.spawn("/home/treor/.config/rofi/bin/launcher_colorful") end)
+        --function() awful.spawn("launcher_colorful") end)
 )
 -- Set keys
 
