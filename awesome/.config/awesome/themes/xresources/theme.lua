@@ -50,9 +50,10 @@ theme.underline_color = xrdb.color14
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
-theme.taglist_fg_empty = xrdb.color0
-theme.taglist_fg_occupied = xrdb.color8
+theme.taglist_fg_empty = xrdb.color8
+theme.taglist_fg_occupied = xrdb.color15
 theme.taglist_fg_focus = xrdb.color4
+theme.taglist_fg_urgent = xrdb.color9
 
 theme.tooltip_fg = theme.fg_normal
 theme.tooltip_bg = theme.bg_normal
