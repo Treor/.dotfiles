@@ -13,6 +13,7 @@ local dpi = xresources.apply_dpi
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+--local task_list = require('configuration.widgets.task-list')
 
 require('configuration.client')
 _G.root.keys(require('configuration.keys.global'))
@@ -326,7 +327,10 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
         },
         --nil,
+        {
+        layout = wibox.layout.fixed.horizontal,
         s.mytasklist, -- Middle widget
+        },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
@@ -410,3 +414,8 @@ _G.client.connect_signal("focus", function(c) c.border_color = beautiful.border_
 _G.client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 -- Autostart
+--
+--awful.rules = {
+    --{ rule = { name = "CCTV" },
+        --properties = { floating = true } }
+--}
