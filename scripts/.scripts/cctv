@@ -1,0 +1,2 @@
+#!/bin/bash
+exec mpv rtsp://admin:123456@192.168.2.26:554/profile1 --no-audio --fs --title='CCTV' --x11-name='cctv' --autofit=98%x90% --geometry=+50%+50%/5 > /dev/null 2>&1 &
