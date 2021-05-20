@@ -201,7 +201,7 @@ awful.screen.connect_for_each_screen(function(s)
     --set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "", "", "", "", ""}, s, awful.layout.layouts[1])
+    awful.tag({ "", "", "", "", ""}, s, awful.layout.layouts[1])
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, height = 25 })
