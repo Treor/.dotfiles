@@ -1,8 +1,6 @@
 local awful = require('awful')
 local gears = require('gears')
 local beautiful = require("beautiful")
-local client_keys = require('configuration.client.keys')
-local client_buttons = require('configuration.client.buttons')
 
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
@@ -12,8 +10,8 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
-                     keys = client_keys,
-                     buttons = client_buttons,
+                     keys = require('configuration.client.keys'),
+                     buttons = require('configuration.client.buttons'),
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
@@ -54,7 +52,17 @@ awful.rules.rules = {
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
-
+    { rule = { name = "CCTV" },
+    properties = {
+        floating = true,
+        tag = "",
+    }
+    },
+    { rule = { class = "Vivaldi-stable" },
+    properties = {
+        tag = "",
+    }
+    },
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
