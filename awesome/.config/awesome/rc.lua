@@ -171,7 +171,7 @@ local tasklist_buttons = gears.table.join(
                                               end
                                           end),
                      awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
+                                              awful.menu.client_list({ theme = { width = 200 } })
                                           end),
                      awful.button({ }, 4, function ()
                                               awful.client.focus.byidx(1)
@@ -259,7 +259,7 @@ awful.screen.connect_for_each_screen(function(s)
         },
         layout   = {
             spacing = 0,
-            max_widget_size = 250,
+            max_widget_size = 200,
             layout  = wibox.layout.flex.horizontal
         },
         -- Notice that there is *NO* wibox.wibox prefix, it is a template,
