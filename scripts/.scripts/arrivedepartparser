@@ -1,0 +1,19 @@
+BEGIN {
+    FPAT = "([^;]+)|(\"[^\"]+\")"
+}
+{
+    if ($4 != "\"Субъект\"") {
+        split($4, t, " ")
+        name = substr(t[1], 2, length(t[1]) -1 )
+
+        split($5, t, " ")
+        time = substr(t[4], 1, length(t[4]) - 4)
+        date = substr(t[2], 1, length(t[2]) - 1)
+        if (length(time) == 4) {
+            printf("%s %s 0%s\n", date, name, time)
+        }
+        else {
+            printf("%s %s %s\n", date, name, time)
+        }
+    }
+}

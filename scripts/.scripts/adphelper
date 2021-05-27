@@ -1,0 +1,53 @@
+#!/bin/bash
+input="/dev/stdin"
+DATE="0"
+NAME="0"
+TIMEARRIVAL="0"
+TIMEDEPARTURE="0"
+i=0
+while IFS='\n' read -r line
+do
+    lines[i]=$line
+    i=$((i+1))
+done < $input
+printf '%s\n' "${lines[@]}"
+lineslen=${#lines[@]}
+for ((i = 0; i < $lineslen; i++)); do
+    str=${lines[i]}
+    IFS=' ' read -r s1 s2 s3 <<< $str
+    a[i]=$s1
+    b[i]=$s2
+    c[i]=$s3
+done
+#while IFS=" " read -r n1 n2 n3
+#do
+    #if [ $DATE != $n1 ]
+    #then
+        #echo $n1
+        #DATE=$n1
+    #fi
+    #if [ $NAME != $n2 ] && [ $DATE != $n1 ]
+    #then
+        #NAME=$n2
+        #if [ $TIMEARRIVAL != $n3 ]
+        #then
+            #TIMEARRIVAL=$n3
+        #else
+            #TIMEDEPARTURE=$n3
+        #fi
+        #echo "1" $NAME $TIMEARRIVAL $TIMEDEPARTURE
+    #elif [ $NAME != $n2 ] && [ $DATE = $n1 ]
+    #then
+        #NAME=$n2
+        #if [ $TIMEARRIVAL != $n3 ]
+        #then
+            #TIMEARRIVAL=$n3
+        #else
+            #TIMEDEPARTURE=$n3
+        #fi
+        #echo "2" $NAME $TIMEARRIVAL $TIMEDEPARTURE
+    #else
+        #echo "3" $NAME $TIMEARRIVAL $TIMEDEPARTURE
+    #fi
+    #echo $n2 $n3
+#done < $input
