@@ -1,0 +1,46 @@
+#!/bin/bash
+dimmer-toggle() {
+    if [ $var != "1.0" ]
+    then 
+        exec xrandr --output VGA1 --brightness 1
+    else
+        exec xrandr --output VGA1 --brightness 0.5
+    fi
+}
+dimmer-disable ()
+{
+    if [ $var != "1.0" ]
+    then
+        exec xrandr --output VGA1 --brightness 1
+    fi
+}
+dimmer-enable ()
+{
+    if [ $var != "0.50" ]
+    then
+        exec xrandr --output VGA1 --brightness 0.5
+    fi
+}
+var=$(xrandr --verbose | grep Brightness | awk '{print $2}')
+if (( $# != 1))
+then
+    printf "%b" "Error: Wrong number of arguments!\n" >&2
+    exit
+else
+    if [ $1 = "-t" ]
+    then
+        dimmer-toggle
+        exit
+    elif [ $1 = "-d" ]
+    then
+        dimmer-disable
+        exit
+    elif [ $1 = "-e" ]
+    then
+        dimmer-enable
+        exit
+    else
+        printf "Error: Wrong argument. ${1}\n"
+        exit
+    fi
+fi

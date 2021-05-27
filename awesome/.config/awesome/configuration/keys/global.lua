@@ -178,7 +178,9 @@ globalKeys = awful.util.table.join(globalKeys,
     awful.key({"Shift"}, "Print",
         function() awful.spawn("shots") end),
     awful.key({ modkey }, "d",
-        function() awful.spawn("/home/treor/.config/rofi/bin/launcher_colorful") end)
+        function() awful.spawn("/home/treor/.config/rofi/bin/launcher_colorful") end),
+    awful.key({ modkey, "Control", "Shift" }, "d",
+        function() awful.spawn("/home/treor/.scripts/dimmer -t") end)
         --function() awful.spawn("launcher_colorful") end)
 )
 -- Set keys
