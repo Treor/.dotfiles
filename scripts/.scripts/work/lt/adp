@@ -1,0 +1,2 @@
+#!/bin/bash
+awk -f ~/.scripts/work/lt/adp-source/arrivedepartparser $1 | sort | ~/.scripts/work/lt/adp-source/adphelper

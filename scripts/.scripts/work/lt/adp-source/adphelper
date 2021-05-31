@@ -125,3 +125,4 @@ for ((i = 0; i < ${#dates[@]}; i++)); do
     print-grid-line "-" "+"
     printf '\n'
 done
+
