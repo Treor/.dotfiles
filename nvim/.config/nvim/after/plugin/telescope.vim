@@ -8,8 +8,10 @@ require('telescope').setup{
       '--with-filename',
       '--line-number',
       '--column',
-      '--smart-case',
-      '--hidden'
+      '--ignore-case',
+      '--hidden',
+      '--follow',
+      '--fixed-strings'
     },
     prompt_position = "bottom",
     prompt_prefix = "> ",

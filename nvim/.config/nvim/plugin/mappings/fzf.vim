@@ -23,8 +23,6 @@ nnoremap <Leader>fB :Buffers<CR>
 nnoremap <Leader>fC :Colors<CR>
 nnoremap <Leader>fm :Marks<CR>
 nnoremap <Leader>fw :Windows<CR>
-nnoremap <Leader>fL :Locate<CR>
-nnoremap <Leader>fs :Snippets<CR>
 nnoremap <Leader>fc :Commands<CR>
 nnoremap <Leader>fM :Maps<CR>
 nnoremap <Leader>f? :Helptags<CR>
