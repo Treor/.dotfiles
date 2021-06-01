@@ -67,6 +67,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-treesitter/playground'
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(1) } }
     Plug 'neovim/nvim-lspconfig'
+    Plug 'glepnir/lspsaga.nvim'
     Plug 'hrsh7th/nvim-compe'
     Plug 'rafamadriz/friendly-snippets'
     Plug 'hrsh7th/vim-vsnip'
@@ -75,6 +76,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'haishanh/night-owl.vim'
     Plug 'ghifarit53/tokyonight-vim'
     Plug 'drewtempelmeyer/palenight.vim'
+
+    Plug 'junegunn/vim-peekaboo'
+    Plug 'milisims/nvim-luaref'
 
     "Plug 'TaDaa/vimade'
 call plug#end()

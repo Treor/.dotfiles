@@ -143,7 +143,7 @@ endif
 set visualbell t_vb=                  " stop annoying beeping for non-error errors
 set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
 
-set clipboard+=unnamed                " Let vim use the systems clipboard
+"set clipboard+=unnamed                " Let vim use the systems clipboard
 set mouse=a                           " Enable mouse support
 syntax on                             " Enable syntax
 set laststatus=2
