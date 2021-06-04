@@ -4,7 +4,7 @@ dimmer-toggle() {
     then 
         exec xrandr --output VGA1 --brightness 1
     else
-        exec xrandr --output VGA1 --brightness 0.5
+        exec xrandr --output VGA1 --brightness 0.3
     fi
 }
 dimmer-disable ()
@@ -16,9 +16,9 @@ dimmer-disable ()
 }
 dimmer-enable ()
 {
-    if [ $var != "0.50" ]
+    if [ $var != "0.30" ]
     then
-        exec xrandr --output VGA1 --brightness 0.5
+        exec xrandr --output VGA1 --brightness 0.3
     fi
 }
 var=$(xrandr --verbose | grep Brightness | awk '{print $2}')
