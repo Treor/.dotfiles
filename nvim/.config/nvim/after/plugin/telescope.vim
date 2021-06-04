@@ -8,7 +8,7 @@ require('telescope').setup{
       '--with-filename',
       '--line-number',
       '--column',
-      '--ignore-case',
+      '--smart-case',
       '--hidden',
       '--follow',
       '--fixed-strings'
