@@ -52,6 +52,16 @@ awful.rules.rules = {
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
+    { rule = { class = "discord" },
+    properties = {
+        tag = "",
+    }
+    },
+    { rule = { name = "mp" },
+    properties = {
+        tag = "",
+    }
+    },
     { rule = { name = "CCTV" },
     properties = {
         floating = true,

@@ -24,7 +24,8 @@ require('module.autostart')
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
+                     text = awesome.startup_errors,
+                     timeout = 10 })
 end
 
 -- Handle runtime errors after startup
