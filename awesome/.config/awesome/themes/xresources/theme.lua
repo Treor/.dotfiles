@@ -4,9 +4,6 @@
 ---------------------------------------------
 
 local theme_assets = require("beautiful.theme_assets")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
-local xrdb = xresources.get_current_theme()
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
@@ -18,26 +15,25 @@ theme.font          = "sans-serif Bold"..dpi(8)
 theme.iconfont      = "sans-serif Bold"..dpi(6)
 theme.boldfont      = "sans-serif Bold "..dpi(10)
 
---theme.bg_normal     = xrdb.background .."00"
-theme.bg_normal     = xrdb.background
+theme.bg_normal     = x.background
 theme.bg_focus      = theme.bg_normal
 theme.bg_urgent     = theme.bg_normal
 theme.bg_minimize   = theme.bg_normal
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = xrdb.foreground
-theme.fg_focus      = xrdb.color4
-theme.fg_urgent     = xrdb.color9
-theme.fg_minimize   = xrdb.color8
+theme.fg_normal     = x.foreground
+theme.fg_focus      = x.color4
+theme.fg_urgent     = x.color9
+theme.fg_minimize   = x.color8
 
 theme.useless_gap   = dpi(3)
 theme.gap_single_client = true
 theme.border_width  = dpi(1)
-theme.border_normal = xrdb.color0
+theme.border_normal = x.color0
 theme.border_focus  = theme.bg_focus
-theme.border_marked = xrdb.color10
+theme.border_marked = x.color10
 
-theme.underline_color = xrdb.color14
+theme.underline_color = x.color14
 
 -- There are other variable sets
 -- overriding the default one when
@@ -50,10 +46,10 @@ theme.underline_color = xrdb.color14
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
-theme.taglist_fg_empty = xrdb.color8
-theme.taglist_fg_occupied = xrdb.color15
-theme.taglist_fg_focus = xrdb.color4
-theme.taglist_fg_urgent = xrdb.color9
+theme.taglist_fg_empty = x.color8
+theme.taglist_fg_occupied = x.color15
+theme.taglist_fg_focus = x.color4
+theme.taglist_fg_urgent = x.color9
 
 theme.tooltip_fg = theme.fg_normal
 theme.tooltip_bg = theme.bg_normal
@@ -158,7 +154,7 @@ theme = theme_assets.recolor_titlebar(
     theme, darker(theme.fg_normal, -60), "normal", "hover"
 )
 theme = theme_assets.recolor_titlebar(
-    theme, xrdb.color1, "normal", "press"
+    theme, x.color1, "normal", "press"
 )
 theme = theme_assets.recolor_titlebar(
     theme, theme.fg_focus, "focus"
@@ -167,7 +163,7 @@ theme = theme_assets.recolor_titlebar(
     theme, darker(theme.fg_focus, -60), "focus", "hover"
 )
 theme = theme_assets.recolor_titlebar(
-    theme, xrdb.color1, "focus", "press"
+    theme, x.color1, "focus", "press"
 )
 
 -- Define the icon theme for application icons. If not set then the icons
@@ -197,9 +193,9 @@ end
 local is_dark_bg = (bg_numberic_value < 383)
 
 -- Generate wallpaper:
-local wallpaper_bg = xrdb.color8
-local wallpaper_fg = xrdb.color7
-local wallpaper_alt_fg = xrdb.color12
+local wallpaper_bg = x.color8
+local wallpaper_fg = x.color7
+local wallpaper_alt_fg = x.color12
 if not is_dark_bg then
     wallpaper_bg, wallpaper_fg = wallpaper_fg, wallpaper_bg
 end
