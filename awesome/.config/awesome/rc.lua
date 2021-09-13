@@ -15,6 +15,13 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 --local task_list = require('configuration.widgets.task-list')
 
+-- ===================================================================
+local themes = {
+    "xresources",        -- 1 --
+}
+-- Change this number to use a different theme
+local theme = themes[1]
+-- ===================================================================
 require('configuration.client')
 _G.root.keys(require('configuration.keys.global'))
 require('module.autostart')
@@ -44,8 +51,9 @@ do
 end
 -- }}}
 
---beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/treor/.config/awesome/themes/xresources/theme.lua")
+-- Load theme
+local theme_dir = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme .. "/"
+beautiful.init(theme_dir .. "theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
