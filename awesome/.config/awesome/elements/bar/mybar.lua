@@ -57,9 +57,9 @@ local taglist_buttons = gears.table.join(
                                               if client.focus then
                                                   client.focus:toggle_tag(t)
                                               end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+                                          end)
+                    --awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+                    --awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
                 )
 
 local tasklist_buttons = gears.table.join(
@@ -76,12 +76,6 @@ local tasklist_buttons = gears.table.join(
                                           end),
                      awful.button({ }, 3, function()
                                               awful.menu.client_list({ theme = { width = 200 } })
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
                                           end))
 
 awful.screen.connect_for_each_screen(function(s)
