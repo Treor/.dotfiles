@@ -13,6 +13,12 @@ local bar_themes = {
 }
 local bar_theme = bar_themes[1]
 -- ===================================================================
+local notification_themes = {
+    "WIP",        -- 1 --
+}
+-- Change this number to use a different theme
+local notification_theme = notification_themes[1]
+-- ===================================================================
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
