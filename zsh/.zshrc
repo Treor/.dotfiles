@@ -219,13 +219,13 @@ bindkey '^Z' fg-bg
 #
 
 source $HOME/aliases.bash
-source $HOME/.zsh/common
+#source $HOME/.zsh/common
 #source $HOME/.zsh/colors
 source $HOME/.zsh/exports
 #source $HOME/.zsh/functions
-source $HOME/.zsh/hash
+#source $HOME/.zsh/hash
 source $HOME/.zsh/path
-source $HOME/.zsh/vars
+#source $HOME/.zsh/vars
 source $HOME/.zsh/fff
 source $HOME/.zsh/nnn
 
