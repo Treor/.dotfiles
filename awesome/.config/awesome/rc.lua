@@ -21,7 +21,7 @@ local notification_theme = notification_themes[1]
 -- ===================================================================
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "kitty --single-instance --instance-group main"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
