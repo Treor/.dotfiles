@@ -50,8 +50,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'andrewradev/switch.vim'
     Plug 'rust-lang/rust.vim'
     Plug 'itchyny/lightline.vim'
-    Plug 'justinmk/vim-dirvish'
-    Plug 'kristijanhusak/vim-dirvish-git'
+    "Plug 'justinmk/vim-dirvish'
+    "Plug 'kristijanhusak/vim-dirvish-git'
     Plug 'xolox/vim-session'
     Plug 'xolox/vim-misc'
     Plug 'ryanoasis/vim-devicons'
@@ -79,7 +79,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'junegunn/vim-peekaboo'
     Plug 'milisims/nvim-luaref'
-
+    Plug 'elihunter173/dirbuf.nvim'
     "Plug 'TaDaa/vimade'
 call plug#end()
 
