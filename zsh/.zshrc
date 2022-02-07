@@ -118,11 +118,11 @@ function () {
   local TMUXING=$([[ "$TERM" =~ "tmux" ]] && echo tmux)
   if [ -n "$TMUXING" -a -n "$TMUX" ]; then
     # In a a tmux session created in a non-root or root shell.
-    local LVL=$(($SHLVL - 1))
+    local LVL=$(($SHLVL))
   else
     # Either in a root shell created inside a non-root tmux session,
     # or not in a tmux session.
-    local LVL=$(($SHLVL - 2))
+    local LVL=$(($SHLVL))
   fi
   if [[ $EUID -eq 0 ]]; then
       local SUFFIX=$(printf '#%.0s' {1..$LVL})
