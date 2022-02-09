@@ -225,7 +225,7 @@ source $HOME/.zsh/exports
 #source $HOME/.zsh/functions
 #source $HOME/.zsh/hash
 source $HOME/.zsh/path
-#source $HOME/.zsh/vars
+source $HOME/.zsh/vars
 source $HOME/.zsh/fff
 source $HOME/.zsh/nnn
 

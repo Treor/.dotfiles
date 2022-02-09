@@ -8,3 +8,4 @@ tmux/.tmux/resurrect/*
 qutebrowser/.config/qutebrowser/bookmarks
 qutebrowser/.config/qutebrowser/quickmarks
 vifm/.config/vifm/vifminfo.json
+*.pem

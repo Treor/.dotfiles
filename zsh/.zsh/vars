@@ -1,2 +1,4 @@
 # don't export CDPATH (can cause problems with shell scripts etc)
 CDPATH=.:~:~/code
+XDG_CONFIG_HOME=~/.config
+TASKRC=~/.config/task/.taskrc
