@@ -15,13 +15,13 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-#data.location=/home/treor/.task
+data.location=/home/treor/.task
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
 
-data.location=~/.local/share/task
-hooks.location=~/.config/task/hooks
+#data.location=~/.local/share/task
+#hooks.location=~/.config/task/hooks
 
 # Sync configuration (via inthe.am service)
 taskd.certificate=/home/treor/.config/task/private.certificate.pem
