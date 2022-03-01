@@ -24,6 +24,7 @@ local notification_theme = notification_themes[1]
 terminal = "kitty --single-instance --instance-group main"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+filemanager = "dolphin"
 
 -- Initialization
 -- ===================================================================
@@ -150,7 +151,7 @@ root.buttons(gears.table.join(
 -- >> Elements - Desktop components
 -- Statusbar(s)
 require("elements.bar."..bar_theme)
-
+--require("themes."..theme)
 
 
 -- {{{ Signals
